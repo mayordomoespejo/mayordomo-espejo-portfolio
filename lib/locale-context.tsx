@@ -25,23 +25,18 @@ type LocaleContextValue = {
 const LocaleContext = createContext<LocaleContextValue | null>(null)
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(defaultLocale)
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    const initial = getInitialLocale()
-    setLocaleState(initial)
-    setMounted(true)
-    if (typeof document !== "undefined") document.documentElement.lang = initial
-  }, [])
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale)
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next)
     if (typeof window !== "undefined") {
       localStorage.setItem(STORAGE_KEY, next)
-      document.documentElement.lang = next
     }
   }, [])
+
+  useEffect(() => {
+    if (typeof document !== "undefined") document.documentElement.lang = locale
+  }, [locale])
 
   const t = useCallback(
     (key: string): string => {
@@ -54,14 +49,6 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const dict = translations[locale]
 
   const value: LocaleContextValue = { locale, setLocale, t, dict }
-
-  if (!mounted) {
-    return (
-      <LocaleContext.Provider value={{ ...value, locale: defaultLocale }}>
-        {children}
-      </LocaleContext.Provider>
-    )
-  }
 
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
 }

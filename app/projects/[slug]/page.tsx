@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { projects, getProject } from "@/lib/projects"
+import { projects, getProject } from "@/lib/data/projects"
 import { ProjectDetail } from "@/components/project-detail"
+import { PROFILE } from "@/lib/site-config"
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -18,7 +19,7 @@ export async function generateMetadata({
   const project = getProject(slug)
   if (!project) return {}
   return {
-    title: `${project.title} — Miguel Mayordomo Espejo`,
+    title: `${project.title} — ${PROFILE.name}`,
     description: project.subtitle,
   }
 }

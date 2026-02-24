@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import { useLocale } from "@/lib/locale-context"
 import { EASE } from "@/lib/motion"
+import { PROFILE } from "@/lib/site-config"
 
 export function Hero() {
   const { t } = useLocale()
@@ -31,7 +32,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease: EASE }}
           >
-            Miguel Mayordomo Espejo
+            {PROFILE.name}
           </motion.h1>
 
           {/* Subtitle */}

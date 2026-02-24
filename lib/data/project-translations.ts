@@ -2,12 +2,11 @@
  * Translated content for each project (es/en). Merged with project base data in components.
  */
 
-import type { Locale } from "./translations"
+import type { Locale } from "../translations"
 
 export interface ProjectTranslation {
   title: string
   subtitle: string
-  role: string
   challenge: string
   myRole: string
   features: string[]
@@ -22,7 +21,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     "turbowash-terminal": {
       title: "Turbowash Terminal",
       subtitle: "Interfaz de pago para kioscos de lavado de coches",
-      role: "Desarrollo",
       challenge:
         "Turbowash necesitaba una interfaz de pago para kioscos en exterior: legible a pleno sol, soporte de tarjeta y efectivo, y comunicación con el hardware de lavado mediante señales de pulso.",
       myRole:
@@ -48,7 +46,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     "turbowash-portal": {
       title: "Turbowash Área Cliente",
       subtitle: "Panel del cliente para gestión de vehículos y servicios",
-      role: "Desarrollo",
       challenge:
         "Los clientes de Turbowash necesitaban gestionar su cuenta en línea: historial de lavados, vehículos, facturas y cupones de fidelidad. Aspecto premium y navegación sencilla.",
       myRole:
@@ -72,7 +69,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     wetour: {
       title: "Wetour",
       subtitle: "Plataforma comunitaria de la red de fitness líder en España",
-      role: "Desarrollo",
       challenge:
         "Wezone, una red de fitness con 11 centros y más de 15.000 socios, necesitaba una plataforma para unificar la comunidad: descubrir eventos, conectar con centros y participar en el contenido.",
       myRole:
@@ -100,7 +96,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     "goiko-ordering": {
       title: "Goiko Ordering",
       subtitle: "Plataforma eCommerce para la cadena de hamburguesas icónica en España",
-      role: "Desarrollo frontend",
       challenge:
         "Goiko, una de las cadenas de hamburguesas más reconocidas en España con más de 100 locales, necesitaba una plataforma de pedidos online a medida. La solución debía gestionar entrega y recogida, integrar múltiples servicios externos y ofrecer una experiencia que reflejara su marca.",
       myRole:
@@ -134,7 +129,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     "turbowash-terminal": {
       title: "Turbowash Terminal",
       subtitle: "Payment interface for automated car wash kiosks",
-      role: "Development",
       challenge:
         "Turbowash needed a payment interface for outdoor kiosks — crystal clear in bright sunlight, supporting card and cash, and communicating with wash hardware via pulse signals.",
       myRole:
@@ -160,7 +154,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     "turbowash-portal": {
       title: "Turbowash Client Portal",
       subtitle: "Customer dashboard for vehicle and service management",
-      role: "Development",
       challenge:
         "Turbowash customers needed a way to manage their accounts online — wash history, vehicles, invoices, and loyalty coupons. Premium feel, simple navigation.",
       myRole:
@@ -184,7 +177,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     wetour: {
       title: "Wetour",
       subtitle: "Community platform for Spain's leading fitness network",
-      role: "Development",
       challenge:
         "Wezone, a fitness network with 11 centers and 15K+ active members, needed a platform to unify their community — discover events, connect with sports centers, and engage with content.",
       myRole:
@@ -212,7 +204,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
     "goiko-ordering": {
       title: "Goiko Ordering",
       subtitle: "Full eCommerce platform for Spain's iconic burger chain",
-      role: "Frontend Development",
       challenge:
         "Goiko, one of Spain's most recognized burger chains with 100+ locations, needed a custom online ordering platform. The solution had to handle delivery and pickup orders, integrate with multiple third-party services, and provide a seamless experience that matched their bold brand identity.",
       myRole:

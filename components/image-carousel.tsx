@@ -3,10 +3,9 @@
 import { useState, useCallback, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import type { ProjectImage } from "@/lib/projects"
+import type { ProjectImage } from "@/lib/data/projects"
 import { IPhoneFrame, MacBookFrame, TerminalFrame, WireframeFrame } from "@/components/device-frame"
 import { useLocale } from "@/lib/locale-context"
-import { EASE } from "@/lib/motion"
 
 // Portrait frames (mobile/terminal) are ~620-665px tall by design.
 // On mobile we scale them down via CSS zoom (layout-affecting, unlike transform:scale)

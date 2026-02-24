@@ -26,11 +26,6 @@ export const translations = {
     "hero.viewWork": "Proyectos",
     "hero.aboutMe": "Sobre mí",
 
-    // Footer
-    "footer.about": "Sobre mí",
-    "footer.projects": "Proyectos",
-    "footer.linkedIn": "LinkedIn",
-
     // Contact CTA
     "contact.title": "Trabajemos juntos",
 
@@ -57,11 +52,6 @@ export const translations = {
 
     // About page
     "about.title": "Sobre mí",
-    "about.contact.location": "Alicante, España",
-    "about.contact.remote": "Abierto a remoto y reubicación",
-    "about.contact.phone": "+34 615 540 785",
-    "about.contact.email": "miguelmayordomoespejo@gmail.com",
-    "about.contact.linkedIn": "https://linkedin.com/in/miguel-mayordomo-espejo-779542203",
     "about.bio.1":
       "Soy desarrollador Frontend especializado en aplicaciones web y móviles con React y React Native, enfocado en crear productos robustos, escalables y fáciles de mantener en entornos reales de producción.",
     "about.bio.2":
@@ -119,10 +109,6 @@ export const translations = {
     "hero.viewWork": "Projects",
     "hero.aboutMe": "About Me",
 
-    "footer.about": "About",
-    "footer.projects": "Projects",
-    "footer.linkedIn": "LinkedIn",
-
     "contact.title": "Let's work together",
 
     "work.sectionTitle": "Selected Work",
@@ -145,11 +131,6 @@ export const translations = {
     "project.goToImage": "Go to image",
 
     "about.title": "About Me",
-    "about.contact.location": "Alicante, Spain",
-    "about.contact.remote": "Open to Remote & Relocation",
-    "about.contact.phone": "+34 615 540 785",
-    "about.contact.email": "miguelmayordomoespejo@gmail.com",
-    "about.contact.linkedIn": "https://linkedin.com/in/miguel-mayordomo-espejo-779542203",
     "about.bio.1":
       "I'm a Frontend developer specialized in web and mobile applications with React and React Native, focused on creating robust, scalable and maintainable products in real production environments.",
     "about.bio.2":
@@ -194,12 +175,3 @@ export const translations = {
       "React · React Native · Expo · Vite · Zustand · TanStack Query · Axios · Firebase · Formik · Yup · Sass · n8n · OpenAI · Git",
   },
 } as const
-
-// Keys that are strings (for use with t())
-export type StringKey = {
-  [K in keyof (typeof translations)["en"]]: (typeof translations)["en"][K] extends string
-    ? K
-    : never
-}[keyof (typeof translations)["en"]]
-
-export type TranslationKey = keyof (typeof translations)["en"]

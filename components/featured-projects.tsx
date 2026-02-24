@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { projects } from "@/lib/projects"
+import { projects } from "@/lib/data/projects"
 import { ProjectCard } from "@/components/project-card"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"

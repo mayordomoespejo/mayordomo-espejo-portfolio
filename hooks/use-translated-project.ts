@@ -1,10 +1,10 @@
 "use client"
 
 import { useMemo } from "react"
-import { getProject } from "@/lib/projects"
-import { getProjectTranslation } from "@/lib/project-translations"
+import { getProject } from "@/lib/data/projects"
+import { getProjectTranslation } from "@/lib/data/project-translations"
 import { useLocale } from "@/lib/locale-context"
-import type { Project } from "@/lib/projects"
+import type { Project } from "@/lib/data/projects"
 
 /**
  * Returns a project with all user-facing text in the current locale.
@@ -28,12 +28,11 @@ export function useTranslatedProject(slug: string): Project | null {
       ...project,
       title: translation.title,
       subtitle: translation.subtitle,
-      role: translation.role,
       challenge: translation.challenge,
       myRole: translation.myRole,
       features: translation.features,
       results: translation.results,
       images,
     }
-  }, [project, translation, locale])
+  }, [project, translation])
 }

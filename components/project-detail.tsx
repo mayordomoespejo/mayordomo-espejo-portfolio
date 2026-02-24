@@ -4,13 +4,14 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
-import { getAdjacentProjects } from "@/lib/projects"
+import { getAdjacentProjects } from "@/lib/data/projects"
 import { ImageCarousel } from "@/components/image-carousel"
 import { TechTag } from "@/components/tech-tag"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useLocale } from "@/lib/locale-context"
-import { getProjectTranslation } from "@/lib/project-translations"
+import { getProjectTranslation } from "@/lib/data/project-translations"
 import { fadeUp, EASE } from "@/lib/motion"
+import { getProjectCoverScaleClass } from "@/lib/project-cover"
 
 // ─── Hairline section — for narrative content blocks ─────────────────────────
 function Section({
@@ -86,13 +87,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
                 alt={`${project.title} cover`}
                 width={384}
                 height={384}
-                className={`h-full w-full object-cover ${
-                  project.slug === "goiko-ordering"
-                    ? "scale-[1.8]"
-                    : project.slug === "wetour"
-                    ? "scale-125"
-                    : "scale-110"
-                }`}
+                className={`h-full w-full object-cover ${getProjectCoverScaleClass(project.slug)}`}
                 priority
               />
             </div>
@@ -299,7 +294,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
             <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
               {t("project.gallery")}
             </h2>
-            <ImageCarousel images={project.images} projectSlug={project.slug} />
+            <ImageCarousel images={project.images} />
           </motion.div>
         )}
 

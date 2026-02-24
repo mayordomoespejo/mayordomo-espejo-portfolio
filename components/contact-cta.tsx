@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"
+import { PROFILE } from "@/lib/site-config"
 
 export function ContactCTA() {
   const { t } = useLocale()
@@ -23,13 +24,13 @@ export function ContactCTA() {
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href="mailto:miguelmayordomoespejo@gmail.com"
+              href={`mailto:${PROFILE.email}`}
               className="inline-flex h-11 items-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
             >
-              miguelmayordomoespejo@gmail.com
+              {PROFILE.email}
             </a>
             <a
-              href="https://www.linkedin.com/in/miguel-mayordomo-espejo-779542203/"
+              href={PROFILE.linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"

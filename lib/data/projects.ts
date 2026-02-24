@@ -18,7 +18,6 @@ export interface Project {
   slug: string
   title: string
   subtitle: string
-  role: string
   year: string
   stack: string[]
   tags: string[]
@@ -33,7 +32,6 @@ export interface Project {
   keyFindings?: string[]
   figmaUrl?: string
   images: ProjectImage[]
-  thumbnail: string
   cover: string
   url?: string
 }
@@ -44,7 +42,6 @@ export const projects: Project[] = [
     title: "Turbowash Terminal",
     subtitle: "Payment interface for automated car wash kiosks",
     url: "https://turbowash.es/",
-    role: "Development",
     year: "2025",
     stack: ["React Native", "Expo", "Hardware Integration"],
     tags: ["React Native"],
@@ -62,7 +59,6 @@ export const projects: Project[] = [
       "Deployed across 5+ locations processing real transactions daily",
       "Zero-training interface \u2014 customers use it without assistance",
     ],
-    thumbnail: "/images/turbowash-terminal-1.png",
     cover: "/images/cover-turbowash.png",
     images: [
       {
@@ -97,7 +93,6 @@ export const projects: Project[] = [
     title: "Turbowash Client Portal",
     subtitle: "Customer dashboard for vehicle and service management",
     url: "https://turbowash.es/",
-    role: "Development",
     year: "2025",
     stack: ["React", "REST API Integration"],
     tags: ["React"],
@@ -115,7 +110,6 @@ export const projects: Project[] = [
       "Clean, intuitive dashboard serving Turbowash customers",
       "Reduced support requests for billing inquiries",
     ],
-    thumbnail: "/images/turbowash-area-cliente-1.png",
     cover: "/images/cover-turbowash.png",
     images: [
       {
@@ -140,7 +134,6 @@ export const projects: Project[] = [
     title: "Wetour",
     subtitle: "Community platform for Spain's leading fitness network",
     url: "https://wetourfit.com/",
-    role: "Development",
     year: "2024",
     stack: ["Next.js", "React", "SEO Optimization"],
     tags: ["Next.js"],
@@ -159,7 +152,6 @@ export const projects: Project[] = [
       "Platform live with organic growth via SEO-first architecture",
       "New revenue stream through paid event registrations",
     ],
-    thumbnail: "/images/wetour-desktop-5.png",
     cover: "/images/cover-wetour.png",
     images: [
       {
@@ -200,7 +192,6 @@ export const projects: Project[] = [
     subtitle:
       "Full eCommerce platform for Spain's iconic burger chain",
     url: "https://www.goiko.com/es/delivery",
-    role: "Frontend Development",
     year: "2022-2023",
     stack: ["Vue 3", "Vuex", "JavaScript", "Paycomet", "Deliverect", "Google Maps API"],
     tags: ["Vue"],
@@ -224,7 +215,6 @@ export const projects: Project[] = [
       "Reduced dependency on third-party delivery apps",
       "Conversion tracking feeding directly into business intelligence",
     ],
-    thumbnail: "/images/goiko-desktop-1.png",
     cover: "/images/cover-goiko.png",
     images: [
       {

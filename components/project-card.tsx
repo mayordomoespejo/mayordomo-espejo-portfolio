@@ -9,6 +9,7 @@ import { TechTag } from "@/components/tech-tag"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { cn } from "@/lib/utils"
 import { EASE } from "@/lib/motion"
+import { getProjectCoverScaleClass } from "@/lib/project-cover"
 
 export function ProjectCard({
   slug,
@@ -55,11 +56,7 @@ export function ProjectCard({
             height={400}
             className={cn(
               "h-full w-full object-cover object-center transition-transform duration-300",
-              project.slug === "goiko-ordering" && "scale-[1.80] group-hover:scale-[1.85]",
-              project.slug === "wetour" && "scale-125 group-hover:scale-[1.3]",
-              project.slug !== "goiko-ordering" &&
-                project.slug !== "wetour" &&
-                "scale-110 group-hover:scale-[1.15]"
+              getProjectCoverScaleClass(project.slug, true)
             )}
           />
         </div>
