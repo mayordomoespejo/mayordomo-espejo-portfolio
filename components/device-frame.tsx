@@ -2,10 +2,36 @@
 
 import Image from "next/image"
 
+const FALLBACK_IMAGE_SRC = "/placeholder.svg"
+
+/**
+ * Shared props used by all framed screenshot components.
+ */
 type DeviceFrameProps = {
   src: string
   alt: string
   className?: string
+}
+
+type FillFrameImageProps = Pick<DeviceFrameProps, "src" | "alt"> & {
+  sizes: string
+  className: string
+}
+
+/**
+ * Renders a responsive image that fully fills a frame viewport.
+ */
+function FillFrameImage({ src, alt, sizes, className }: FillFrameImageProps) {
+  return (
+    <Image
+      src={src || FALLBACK_IMAGE_SRC}
+      alt={alt}
+      fill
+      sizes={sizes}
+      className={className}
+      quality={75}
+    />
+  )
 }
 
 /**
@@ -22,14 +48,12 @@ export function IPhoneFrame({
     >
       <div className="relative rounded-[2.5rem] border-[6px] border-[#1a1a1a] bg-[#1a1a1a]">
         <div className="absolute left-1/2 top-2 z-10 h-[18px] w-[72px] -translate-x-1/2 rounded-full bg-[#1a1a1a]" />
-        <div className="relative overflow-hidden rounded-[2rem]">
-          <Image
-            src={src || "/placeholder.svg"}
+        <div className="relative h-[607px] w-[280px] overflow-hidden rounded-[2rem]">
+          <FillFrameImage
+            src={src}
             alt={alt}
-            width={280}
-            height={607}
-            className="block h-auto w-[280px]"
-            quality={75}
+            sizes="280px"
+            className="object-cover object-top"
           />
         </div>
         <div className="absolute bottom-2 left-1/2 h-[4px] w-[100px] -translate-x-1/2 rounded-full bg-white/20" />
@@ -52,14 +76,12 @@ export function MacBookFrame({
     >
       <div className="relative rounded-t-xl border-[8px] border-[#1a1a1a] bg-[#1a1a1a]">
         <div className="absolute left-1/2 top-[-4px] z-10 h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#333]" />
-        <div className="relative overflow-hidden rounded-[4px]">
-          <Image
-            src={src || "/placeholder.svg"}
+        <div className="relative h-[320px] w-[640px] overflow-hidden rounded-[4px]">
+          <FillFrameImage
+            src={src}
             alt={alt}
-            width={640}
-            height={400}
-            className="block h-auto w-[640px]"
-            quality={75}
+            sizes="640px"
+            className="object-cover object-center"
           />
         </div>
       </div>
@@ -83,11 +105,12 @@ export function WireframeFrame({
     >
       <div className="relative overflow-hidden rounded-xl border-2 border-dashed border-muted-foreground/30 bg-secondary/30 p-2">
         <Image
-          src={src || "/placeholder.svg"}
+          src={src || FALLBACK_IMAGE_SRC}
           alt={alt}
           width={800}
           height={500}
           className="block h-auto max-w-full rounded-lg"
+          style={{ height: "auto" }}
           quality={75}
         />
       </div>
@@ -111,14 +134,12 @@ export function TerminalFrame({
         <div className="absolute -top-[6px] left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5">
           <div className="h-[6px] w-[6px] rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50" />
         </div>
-        <div className="relative overflow-hidden rounded-lg ring-1 ring-white/5">
-          <Image
-            src={src || "/placeholder.svg"}
+        <div className="relative h-[607px] w-[342px] overflow-hidden rounded-lg ring-1 ring-white/5">
+          <FillFrameImage
+            src={src}
             alt={alt}
-            width={280}
-            height={607}
-            className="block h-auto w-[280px]"
-            quality={75}
+            sizes="342px"
+            className="object-cover object-top"
           />
         </div>
       </div>
