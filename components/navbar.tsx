@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -33,6 +33,7 @@ const ICON_BTN =
 type NavControlsProps = {
   locale: "es" | "en"
   setLocale: (locale: "es" | "en") => void
+  mounted: boolean
   resolvedTheme: string | undefined
   toggleTheme: () => void
   t: (key: string) => string
@@ -41,10 +42,13 @@ type NavControlsProps = {
 function NavControls({
   locale,
   setLocale,
+  mounted,
   resolvedTheme,
   toggleTheme,
   t,
 }: NavControlsProps) {
+  const isDark = mounted && resolvedTheme === "dark"
+
   return (
     <>
       <a href={`mailto:${PROFILE.email}`} className={ICON_BTN} aria-label={t("nav.email")}>
@@ -63,9 +67,9 @@ function NavControls({
         type="button"
         onClick={toggleTheme}
         className={ICON_BTN}
-        aria-label={resolvedTheme === "dark" ? t("nav.themeLight") : t("nav.themeDark")}
+        aria-label={isDark ? t("nav.themeLight") : t("nav.themeDark")}
       >
-        {resolvedTheme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </button>
       <div className="flex h-8 overflow-hidden rounded-md border border-border">
         <button
@@ -102,6 +106,11 @@ function NavControls({
  */
 export function Navbar() {
   const pathname = usePathname()
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  )
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [hash, setHash] = useState(() => (typeof window === "undefined" ? "" : window.location.hash))
@@ -192,6 +201,7 @@ export function Navbar() {
             <NavControls
               locale={locale}
               setLocale={setLocale}
+              mounted={mounted}
               resolvedTheme={resolvedTheme}
               toggleTheme={toggleTheme}
               t={t}
@@ -252,6 +262,7 @@ export function Navbar() {
                 <NavControls
                   locale={locale}
                   setLocale={setLocale}
+                  mounted={mounted}
                   resolvedTheme={resolvedTheme}
                   toggleTheme={toggleTheme}
                   t={t}

@@ -1,21 +1,22 @@
 "use client"
 
-import React, { createContext, useCallback, useContext, useEffect, useState } from "react"
+import React, { createContext, useCallback, useContext, useEffect, useState, useSyncExternalStore } from "react"
 import type { Locale } from "./translations"
 import { defaultLocale, translations } from "./translations"
 
 const STORAGE_KEY = "portfolio-locale"
 
 /**
- * Resolves the initial locale from local storage or browser language.
+ * Resolves locale preference from local storage or browser language.
+ *
+ * @returns The locale to use on the client.
  */
-function getInitialLocale(): Locale {
-  if (typeof window === "undefined") return defaultLocale
+function getPreferredLocale(): Locale {
   const stored = localStorage.getItem(STORAGE_KEY) as Locale | null
   if (stored === "es" || stored === "en") return stored
   const browser = navigator.language?.toLowerCase()
   if (browser?.startsWith("es")) return "es"
-  return "en"
+  return defaultLocale
 }
 
 type LocaleContextValue = {
@@ -29,12 +30,21 @@ const LocaleContext = createContext<LocaleContextValue | null>(null)
 
 /**
  * Provides locale state and translation helpers to the app tree.
+ *
+ * @param props - Component props.
+ * @param props.children - Descendant nodes that consume locale context.
  */
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(getInitialLocale)
+  const [userLocale, setUserLocale] = useState<Locale | null>(null)
+  const preferredLocale = useSyncExternalStore(
+    () => () => {},
+    getPreferredLocale,
+    () => defaultLocale
+  )
+  const locale = userLocale ?? preferredLocale
 
   const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next)
+    setUserLocale(next)
     if (typeof window !== "undefined") {
       localStorage.setItem(STORAGE_KEY, next)
     }
@@ -61,6 +71,8 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
 
 /**
  * Returns locale state and translation helpers from context.
+ *
+ * @returns Locale context value.
  */
 export function useLocale() {
   const ctx = useContext(LocaleContext)
