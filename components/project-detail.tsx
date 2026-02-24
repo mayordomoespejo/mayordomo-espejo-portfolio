@@ -5,27 +5,30 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
 import { getAdjacentProjects } from "@/lib/data/projects"
+import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ImageCarousel } from "@/components/image-carousel"
 import { TechTag } from "@/components/tech-tag"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useLocale } from "@/lib/locale-context"
-import { getProjectTranslation } from "@/lib/data/project-translations"
 import { fadeUp, EASE } from "@/lib/motion"
 import { getProjectCoverScaleClass } from "@/lib/project-cover"
 
-// ─── Hairline section — for narrative content blocks ─────────────────────────
-function Section({
-  label,
-  children,
-}: {
+type SectionProps = {
   label: string
   children: React.ReactNode
-}) {
+}
+
+type BulletItemProps = {
+  text: string
+}
+
+type ProjectDetailProps = {
+  slug: string
+}
+
+function Section({ label, children }: SectionProps) {
   return (
-    <motion.div
-      {...fadeUp}
-      className="flex flex-col gap-3 border-t border-border/60 pt-5 pb-1"
-    >
+    <motion.div {...fadeUp} className="flex flex-col gap-3 border-t border-border/60 pb-1 pt-5">
       <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
         {label}
       </h2>
@@ -34,8 +37,7 @@ function Section({
   )
 }
 
-// ─── Bullet list item ─────────────────────────────────────────────────────────
-function BulletItem({ text }: { text: string }) {
+function BulletItem({ text }: BulletItemProps) {
   return (
     <li className="flex items-start gap-2.5 text-sm leading-relaxed text-foreground/75">
       <span className="mt-[7px] block h-1 w-1 shrink-0 rounded-full bg-muted-foreground/35" />
@@ -44,10 +46,13 @@ function BulletItem({ text }: { text: string }) {
   )
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
-export function ProjectDetail({ slug }: { slug: string }) {
+/**
+ * Renders full information for a single project with translated content.
+ */
+export function ProjectDetail({ slug }: ProjectDetailProps) {
   const project = useTranslatedProject(slug)
   const { t, locale } = useLocale()
+
   if (!project) return null
 
   const { prev, next } = getAdjacentProjects(slug)
@@ -55,11 +60,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
   return (
     <div className="px-6 pb-24 pt-28 sm:px-10">
       <div className="mx-auto flex max-w-3xl flex-col gap-10">
-
-        {/* ── A · Header group ─────────────────────────────────────────── */}
         <div className="flex flex-col gap-5">
-
-          {/* Back link */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -74,7 +75,6 @@ export function ProjectDetail({ slug }: { slug: string }) {
             </Link>
           </motion.div>
 
-          {/* Title + cover */}
           <motion.div
             className="flex items-start gap-5"
             initial={{ opacity: 0, y: 16 }}
@@ -91,6 +91,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
                 priority
               />
             </div>
+
             <div className="flex flex-1 flex-col gap-1.5">
               <h1
                 className="font-semibold leading-tight tracking-[-0.025em]"
@@ -128,7 +129,6 @@ export function ProjectDetail({ slug }: { slug: string }) {
             </div>
           </motion.div>
 
-          {/* Meta — tags, year, stack — all same height */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -152,23 +152,18 @@ export function ProjectDetail({ slug }: { slug: string }) {
           </motion.div>
         </div>
 
-        {/* ── B · 4-card grid: Challenge, Role, Features, Outcome ─────── */}
         <motion.div {...fadeUp} className="grid gap-3 sm:grid-cols-2">
           <div className="flex flex-col gap-2.5 rounded-xl border border-border bg-card p-4">
             <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
               {t("project.theChallenge")}
             </h2>
-            <p className="text-sm leading-relaxed text-foreground/75">
-              {project.challenge}
-            </p>
+            <p className="text-sm leading-relaxed text-foreground/75">{project.challenge}</p>
           </div>
           <div className="flex flex-col gap-2.5 rounded-xl border border-border bg-card p-4">
             <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
               {t("project.myRole")}
             </h2>
-            <p className="text-sm leading-relaxed text-foreground/75">
-              {project.myRole}
-            </p>
+            <p className="text-sm leading-relaxed text-foreground/75">{project.myRole}</p>
           </div>
           <div className="flex flex-col gap-2.5 rounded-xl border border-border bg-card p-4">
             <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
@@ -193,7 +188,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
               {project.results.map((result, i) => (
                 <div
                   key={i}
-                  className="border-l-2 border-foreground/15 pl-3 py-0.5 text-sm leading-relaxed text-foreground/75"
+                  className="border-l-2 border-foreground/15 py-0.5 pl-3 text-sm leading-relaxed text-foreground/75"
                 >
                   {result}
                 </div>
@@ -202,93 +197,74 @@ export function ProjectDetail({ slug }: { slug: string }) {
           </div>
         </motion.div>
 
-        {/* ── C · Narrative content sections (optional) ────────────────── */}
-        {/* How It Works */}
         {project.howItWorks && (
-            <Section label={t("project.howItWorks")}>
-              <ol className="flex flex-col gap-2.5">
-                {project.howItWorks.map((step, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2.5 text-sm leading-relaxed text-foreground/75"
-                  >
-                    <span className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary font-mono text-xs text-muted-foreground">
-                      {i + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-            </Section>
-          )}
+          <Section label={t("project.howItWorks")}>
+            <ol className="flex flex-col gap-2.5">
+              {project.howItWorks.map((step, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed text-foreground/75">
+                  <span className="mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary font-mono text-xs text-muted-foreground">
+                    {i + 1}
+                  </span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </Section>
+        )}
 
-        {/* Why I Built This */}
         {project.whyBuilt && (
-            <Section label={t("project.whyIBuiltThis")}>
-              <ul className="flex flex-col gap-1.5">
-                {project.whyBuilt.map((reason, i) => (
-                  <BulletItem key={i} text={reason} />
-                ))}
-              </ul>
-            </Section>
-          )}
+          <Section label={t("project.whyIBuiltThis")}>
+            <ul className="flex flex-col gap-1.5">
+              {project.whyBuilt.map((reason, i) => (
+                <BulletItem key={i} text={reason} />
+              ))}
+            </ul>
+          </Section>
+        )}
 
-        {/* UX Process */}
         {project.uxProcess && (
-            <Section label={t("project.uxProcess")}>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {project.uxProcess.map((step, i) => (
-                  <div key={i} className="flex gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary font-mono text-xs text-muted-foreground">
-                      {i + 1}
-                    </span>
-                    <div className="flex flex-col gap-0.5">
-                      <h3 className="text-sm font-medium text-foreground">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-foreground/70">
-                        {step.description}
-                      </p>
-                    </div>
+          <Section label={t("project.uxProcess")}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {project.uxProcess.map((step, i) => (
+                <div key={i} className="flex gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary font-mono text-xs text-muted-foreground">
+                    {i + 1}
+                  </span>
+                  <div className="flex flex-col gap-0.5">
+                    <h3 className="text-sm font-medium text-foreground">{step.title}</h3>
+                    <p className="text-sm leading-relaxed text-foreground/70">{step.description}</p>
                   </div>
-                ))}
-              </div>
-            </Section>
-          )}
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
 
-        {/* User Test Insights */}
         {project.userTestInsights && (
-            <Section label={t("project.userTestInsights")}>
-              <div className="flex flex-col gap-2">
-                {project.userTestInsights.map((insight, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col gap-1.5 rounded-lg border border-border bg-secondary/30 p-3"
-                  >
-                    <span className="inline-block rounded bg-foreground/[0.07] px-1.5 py-0.5 text-xs font-medium text-foreground/70">
-                      {insight.area}
-                    </span>
-                    <p className="text-sm leading-relaxed text-foreground/75">
-                      {insight.finding}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Section>
-          )}
+          <Section label={t("project.userTestInsights")}>
+            <div className="flex flex-col gap-2">
+              {project.userTestInsights.map((insight, i) => (
+                <div key={i} className="flex flex-col gap-1.5 rounded-lg border border-border bg-secondary/30 p-3">
+                  <span className="inline-block rounded bg-foreground/[0.07] px-1.5 py-0.5 text-xs font-medium text-foreground/70">
+                    {insight.area}
+                  </span>
+                  <p className="text-sm leading-relaxed text-foreground/75">{insight.finding}</p>
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
 
-        {/* Key Findings */}
         {project.keyFindings && (
-            <Section label={t("project.keyFindings")}>
-              <ul className="flex flex-col gap-1.5">
-                {project.keyFindings.map((finding, i) => (
-                  <BulletItem key={i} text={finding} />
-                ))}
-              </ul>
-            </Section>
-          )}
+          <Section label={t("project.keyFindings")}>
+            <ul className="flex flex-col gap-1.5">
+              {project.keyFindings.map((finding, i) => (
+                <BulletItem key={i} text={finding} />
+              ))}
+            </ul>
+          </Section>
+        )}
 
-        {/* ── D · Gallery ───────────────────────────────────────────────── */}
         {project.images.length > 0 && (
           <motion.div {...fadeUp} className="flex flex-col gap-3">
             <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
@@ -298,7 +274,6 @@ export function ProjectDetail({ slug }: { slug: string }) {
           </motion.div>
         )}
 
-        {/* ── E · Prev / Next navigation ───────────────────────────────── */}
         <div className="flex items-center justify-between border-t border-border pt-6">
           {prev ? (
             <Link
@@ -323,7 +298,6 @@ export function ProjectDetail({ slug }: { slug: string }) {
             <span />
           )}
         </div>
-
       </div>
     </div>
   )

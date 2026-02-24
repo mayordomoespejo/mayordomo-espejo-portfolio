@@ -1,3 +1,6 @@
+/**
+ * Static profile information reused in metadata and UI sections.
+ */
 export const PROFILE = {
   name: "Miguel Mayordomo Espejo",
   email: "miguelmayordomoespejo@gmail.com",

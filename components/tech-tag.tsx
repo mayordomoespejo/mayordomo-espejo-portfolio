@@ -1,5 +1,8 @@
 import { ReactIcon, VueIcon, NextIcon } from "@/components/icons"
 
+/**
+ * Figma brand icon used in technology tags.
+ */
 export function FigmaIcon({ className = "h-3.5 w-3.5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +19,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "Figma": FigmaIcon,
   "Next.js": NextIcon,
   "React": ReactIcon,
-  "React Native": ReactIcon, // same logo as React
+  "React Native": ReactIcon,
   "Vue": VueIcon,
 }
 
@@ -28,6 +31,9 @@ const labelMap: Record<string, string> = {
   "Vue": "Development",
 }
 
+/**
+ * Badge that maps a technology name to a normalized label and optional icon.
+ */
 export function TechTag({ tag }: { tag: string }) {
   const Icon = iconMap[tag]
   const label = labelMap[tag] || tag

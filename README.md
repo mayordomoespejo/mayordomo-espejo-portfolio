@@ -1,25 +1,63 @@
 # Mayordomo Espejo Portfolio
 
-Portfolio basado en Next.js. Este es tu propio proyecto; no está vinculado al repositorio original.
+Portfolio personal construido con Next.js, TypeScript, Tailwind CSS y Framer Motion.
 
-## Personalización rápida
+## Stack
 
-1. **Nombre y metadata**: `lib/site-config.ts` y `app/layout.tsx`.
-2. **Hero**: `components/hero.tsx` — texto principal y CTA.
-3. **Contacto**: `lib/site-config.ts`, `components/contact-cta.tsx` y `components/footer.tsx`.
-4. **About**: `components/about-content.tsx` — tu historia, skills y educación.
-5. **Proyectos**: `lib/data/projects.ts` y `lib/data/project-translations.ts`.
+- `Next.js 16` (App Router)
+- `React 19`
+- `TypeScript`
+- `Tailwind CSS`
+- `Framer Motion`
+- `next-themes`
 
-## Desarrollo
+## Requisitos
+
+- `Node.js 20+`
+- `pnpm`
+
+## Desarrollo local
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000).
+App disponible en `http://localhost:3000`.
 
-## Build
+## Scripts
+
+```bash
+pnpm dev    # entorno de desarrollo
+pnpm build  # build de producción
+pnpm start  # servidor de producción
+pnpm lint   # análisis estático
+```
+
+## Estructura del proyecto
+
+- `app/`: rutas y layout global.
+- `components/`: componentes de UI reutilizables.
+- `hooks/`: hooks de aplicación.
+- `lib/`: configuración, utilidades, i18n y datos de proyectos.
+- `public/images/`: imágenes usadas por las cards y detalles de proyectos.
+
+## Personalización rápida
+
+- Perfil principal: `lib/site-config.ts`.
+- Página home: `components/hero.tsx`, `components/featured-projects.tsx`, `components/contact-cta.tsx`.
+- Página about: `components/about-content.tsx`.
+- Navbar y footer: `components/navbar.tsx`, `components/footer.tsx`.
+- Proyectos base: `lib/data/projects.ts`.
+- Traducciones de proyectos: `lib/data/project-translations.ts`.
+- Diccionario general i18n: `lib/translations.ts`.
+
+## Convenciones de documentación
+
+- El código público (componentes y utilidades exportadas) usa comentarios `JSDoc/TSDoc` breves.
+- Se han eliminado comentarios decorativos o redundantes para mantener foco en comportamiento y contratos.
+
+## Build de producción
 
 ```bash
 pnpm build

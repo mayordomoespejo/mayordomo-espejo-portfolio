@@ -6,6 +6,9 @@ import { defaultLocale, translations } from "./translations"
 
 const STORAGE_KEY = "portfolio-locale"
 
+/**
+ * Resolves the initial locale from local storage or browser language.
+ */
 function getInitialLocale(): Locale {
   if (typeof window === "undefined") return defaultLocale
   const stored = localStorage.getItem(STORAGE_KEY) as Locale | null
@@ -24,6 +27,9 @@ type LocaleContextValue = {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null)
 
+/**
+ * Provides locale state and translation helpers to the app tree.
+ */
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(getInitialLocale)
 
@@ -53,6 +59,9 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
 }
 
+/**
+ * Returns locale state and translation helpers from context.
+ */
 export function useLocale() {
   const ctx = useContext(LocaleContext)
   if (!ctx) throw new Error("useLocale must be used within LocaleProvider")

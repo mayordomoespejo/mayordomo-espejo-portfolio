@@ -7,6 +7,9 @@ import { useLocale } from "@/lib/locale-context"
 import { EASE } from "@/lib/motion"
 import { PROFILE } from "@/lib/site-config"
 
+/**
+ * Hero section of the portfolio landing page.
+ */
 export function Hero() {
   const { t } = useLocale()
 
@@ -14,7 +17,6 @@ export function Hero() {
     <section className="relative flex min-h-[100vh] flex-col justify-center px-6 pb-16 pt-28">
       <div className="mx-auto w-full max-w-5xl">
         <div className="flex flex-col gap-7">
-          {/* Role label */}
           <motion.p
             className="font-mono text-xs tracking-[0.2em] text-muted-foreground/70 uppercase"
             initial={{ opacity: 0, y: 16 }}
@@ -23,8 +25,6 @@ export function Hero() {
           >
             {t("hero.role")}
           </motion.p>
-
-          {/* Name — display-size heading */}
           <motion.h1
             className="text-balance font-semibold leading-[1.06] tracking-[-0.025em]"
             style={{ fontSize: "clamp(2.6rem, 7.5vw, 5.5rem)" }}
@@ -34,8 +34,6 @@ export function Hero() {
           >
             {PROFILE.name}
           </motion.h1>
-
-          {/* Subtitle */}
           <motion.p
             className="max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl"
             initial={{ opacity: 0, y: 20 }}
@@ -44,8 +42,6 @@ export function Hero() {
           >
             {t("hero.subtitle")}
           </motion.p>
-
-          {/* Location */}
           <motion.p
             className="text-sm text-muted-foreground/55"
             initial={{ opacity: 0, y: 20 }}
@@ -54,8 +50,6 @@ export function Hero() {
           >
             {t("hero.location")}
           </motion.p>
-
-          {/* CTAs */}
           <motion.div
             className="flex flex-wrap items-center gap-3 pt-1"
             initial={{ opacity: 0, y: 20 }}
@@ -77,8 +71,6 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}

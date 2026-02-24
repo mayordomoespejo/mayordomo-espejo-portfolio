@@ -6,6 +6,9 @@ const COVER_SCALE_BY_SLUG: Record<string, { base: string; hover: string }> = {
   wetour: { base: "scale-125", hover: "group-hover:scale-[1.3]" },
 }
 
+/**
+ * Returns CSS scale classes for project cover images by project slug.
+ */
 export function getProjectCoverScaleClass(slug: string, withHover = false): string {
   const scale = COVER_SCALE_BY_SLUG[slug]
   if (!scale) return withHover ? `${BASE_SCALE} ${HOVER_SCALE}` : BASE_SCALE

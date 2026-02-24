@@ -6,13 +6,15 @@ import { ProjectCard } from "@/components/project-card"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"
 
+/**
+ * Highlights the project cards shown on the home page.
+ */
 export function FeaturedProjects() {
   const { t } = useLocale()
 
   return (
     <section id="work" className="px-6 py-24">
       <div className="mx-auto flex max-w-5xl flex-col gap-10">
-        {/* Section header */}
         <motion.div
           {...fadeUp}
           className="flex items-baseline justify-between"
@@ -24,8 +26,6 @@ export function FeaturedProjects() {
             {String(projects.length).padStart(2, "0")}
           </span>
         </motion.div>
-
-        {/* Project grid */}
         <div className="grid gap-4 md:grid-cols-2">
           {projects.map((project, i) => (
             <ProjectCard key={project.slug} slug={project.slug} index={i} />

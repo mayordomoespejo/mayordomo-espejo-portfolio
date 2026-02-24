@@ -42,6 +42,9 @@ const SKILL_ORDER = [
   "languages",
 ] as const
 
+/**
+ * About page body with profile summary, experience, education and skills.
+ */
 export function AboutContent() {
   const { t, dict } = useLocale()
   const bullets = dict["about.experience.gyoza.bullets"] as readonly string[]
@@ -53,7 +56,6 @@ export function AboutContent() {
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-3xl flex-col gap-12">
-        {/* Page title */}
         <motion.h1
           {...fadeUp}
           className="font-semibold tracking-[-0.02em]"
@@ -62,7 +64,6 @@ export function AboutContent() {
           {t("about.title")}
         </motion.h1>
 
-        {/* Bio */}
         <motion.div {...fadeUp} className="flex flex-col gap-5">
           <p className="text-base leading-relaxed text-muted-foreground">
             {t("about.bio.1")}
@@ -80,7 +81,6 @@ export function AboutContent() {
 
         <div className="h-px bg-border/60" aria-hidden />
 
-        {/* Professional Experience */}
         <motion.div {...fadeUp} className="flex flex-col gap-6">
           <h2 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
             {t("about.experience.title")}
@@ -111,7 +111,6 @@ export function AboutContent() {
 
         <div className="h-px bg-border/60" aria-hidden />
 
-        {/* Education */}
         <motion.div {...fadeUp} className="flex flex-col gap-5">
           <h2 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
             {t("about.education.title")}
@@ -135,7 +134,6 @@ export function AboutContent() {
 
         <div className="h-px bg-border/60" aria-hidden />
 
-        {/* Skills — 2-column grid */}
         <motion.div {...fadeUp} className="flex flex-col gap-5">
           <h2 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
             {t("about.skills.title")}
@@ -175,7 +173,6 @@ export function AboutContent() {
 
         <div className="h-px bg-border/60" aria-hidden />
 
-        {/* Core Stack */}
         <motion.div {...fadeUp} className="flex flex-col gap-3">
           <h2 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
             {t("about.coreStack.title")}

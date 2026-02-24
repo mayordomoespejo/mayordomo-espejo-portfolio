@@ -11,13 +11,18 @@ import { cn } from "@/lib/utils"
 import { EASE } from "@/lib/motion"
 import { getProjectCoverScaleClass } from "@/lib/project-cover"
 
+type ProjectCardProps = {
+  slug: string
+  index: number
+}
+
+/**
+ * Compact project preview card used in listings.
+ */
 export function ProjectCard({
   slug,
   index,
-}: {
-  slug: string
-  index: number
-}) {
+}: ProjectCardProps) {
   const project = useTranslatedProject(slug)
   const pathname = usePathname()
   const router = useRouter()
@@ -47,7 +52,6 @@ export function ProjectCard({
         onClick={handleClick}
         className="group flex h-full min-h-[140px] items-start gap-5 rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-foreground/20 hover:shadow-lg hover:shadow-foreground/[0.04]"
       >
-        {/* Circular cover — base scale + hover scale per project */}
         <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-border/80 sm:h-24 sm:w-24">
           <Image
             src={project.cover || "/placeholder.svg"}
@@ -60,10 +64,7 @@ export function ProjectCard({
             )}
           />
         </div>
-
-        {/* Content */}
         <div className="flex min-h-0 flex-1 flex-col gap-2 self-stretch">
-          {/* Title row */}
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-base font-medium leading-snug text-foreground transition-colors group-hover:text-primary">
               {project.title}
@@ -75,13 +76,9 @@ export function ProjectCard({
               <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/0 transition-all duration-300 group-hover:text-muted-foreground/60" />
             </div>
           </div>
-
-          {/* Subtitle */}
           <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
             {project.subtitle}
           </p>
-
-          {/* Tags */}
           <div className="mt-auto flex flex-wrap gap-1.5 pt-1">
             {project.tags.map((tag) => (
               <TechTag key={tag} tag={tag} />

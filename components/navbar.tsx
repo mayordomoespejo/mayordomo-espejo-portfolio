@@ -17,7 +17,6 @@ function isActive(href: string, pathname: string, hash: string): boolean {
     const [hrefPath, hrefHash] = href.split("#")
     return pathname === hrefPath && hash === `#${hrefHash}`
   }
-  // Home link ("/") is only active when no hash is present
   if (href === "/") return pathname === "/" && hash === ""
   return pathname === href
 }
@@ -98,6 +97,9 @@ function NavControls({
   )
 }
 
+/**
+ * Sticky top navigation with locale/theme controls and hash-aware active links.
+ */
 export function Navbar() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
@@ -118,9 +120,6 @@ export function Navbar() {
     return () => window.removeEventListener("hashchange", onHashChange)
   }, [])
 
-  // Update URL hash on scroll (home page only) so nav reflects visible section.
-  // Activates #work at the exact scroll position where href="/#work" navigates to
-  // (i.e. when the section top reaches the viewport top = scrollY >= section.offsetTop).
   useEffect(() => {
     if (pathname !== "/") return
 
@@ -137,7 +136,7 @@ export function Navbar() {
     }
 
     window.addEventListener("scroll", onScroll, { passive: true })
-    onScroll() // sync on mount
+    onScroll()
     return () => window.removeEventListener("scroll", onScroll)
   }, [pathname])
 
@@ -165,7 +164,6 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        {/* Logo */}
         <Link
           href="/"
           onClick={(e) => handleNavClick(e, "/")}
@@ -173,8 +171,6 @@ export function Navbar() {
         >
           {PROFILE.name}
         </Link>
-
-        {/* Desktop nav */}
         <ul className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -202,8 +198,6 @@ export function Navbar() {
             />
           </li>
         </ul>
-
-        {/* Mobile hamburger */}
         <button
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
@@ -227,8 +221,6 @@ export function Navbar() {
           </div>
         </button>
       </nav>
-
-      {/* Mobile menu — animated */}
       <AnimatePresence initial={false}>
         {mobileOpen && (
           <motion.div

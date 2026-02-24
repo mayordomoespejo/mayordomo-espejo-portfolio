@@ -5,6 +5,9 @@ import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"
 import { PROFILE } from "@/lib/site-config"
 
+/**
+ * Contact section with direct email and LinkedIn call-to-action links.
+ */
 export function ContactCTA() {
   const { t } = useLocale()
 

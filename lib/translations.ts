@@ -8,7 +8,6 @@ export const defaultLocale: Locale = "en"
 
 export const translations = {
   es: {
-    // Nav
     "nav.home": "Inicio",
     "nav.about": "Sobre mí",
     "nav.work": "Proyectos",
@@ -18,7 +17,6 @@ export const translations = {
     "nav.themeLight": "Usar tema claro",
     "nav.themeDark": "Usar tema oscuro",
 
-    // Hero
     "hero.role": "Frontend Developer",
     "hero.subtitle":
       "Construyo productos web y móviles escalables con React y React Native. Enfocado en rendimiento, mantenibilidad y calidad a largo plazo.",
@@ -26,13 +24,10 @@ export const translations = {
     "hero.viewWork": "Proyectos",
     "hero.aboutMe": "Sobre mí",
 
-    // Contact CTA
     "contact.title": "Trabajemos juntos",
 
-    // Work section
     "work.sectionTitle": "Proyectos destacados",
 
-    // Project detail page
     "project.allProjects": "Todos los proyectos",
     "project.visitProject": "Ver proyecto",
     "project.viewInFigma": "Ver en Figma",
@@ -50,7 +45,6 @@ export const translations = {
     "project.nextImage": "Imagen siguiente",
     "project.goToImage": "Ir a la imagen",
 
-    // About page
     "about.title": "Sobre mí",
     "about.bio.1":
       "Soy desarrollador Frontend especializado en aplicaciones web y móviles con React y React Native, enfocado en crear productos robustos, escalables y fáciles de mantener en entornos reales de producción.",

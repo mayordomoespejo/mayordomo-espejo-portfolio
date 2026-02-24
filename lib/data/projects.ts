@@ -246,10 +246,16 @@ export const projects: Project[] = [
   },
 ]
 
+/**
+ * Returns a project by slug.
+ */
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug)
 }
 
+/**
+ * Returns previous and next projects for detail page navigation.
+ */
 export function getAdjacentProjects(slug: string) {
   const index = projects.findIndex((p) => p.slug === slug)
   const prev = index > 0 ? projects[index - 1] : null

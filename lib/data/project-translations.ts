@@ -235,6 +235,9 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
   },
 }
 
+/**
+ * Returns translated content for a given project and locale.
+ */
 export function getProjectTranslation(
   slug: string,
   locale: Locale

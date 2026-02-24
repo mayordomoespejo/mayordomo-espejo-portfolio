@@ -1,11 +1,8 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from "react"
 
 /**
- * Iconos reutilizables en un único fichero.
- * Todos aceptan className para tamaño y estilo (p. ej. "h-3.5 w-3.5").
+ * React brand icon.
  */
-
-// --- React ---
 export function ReactIcon({
   className = "h-4 w-4",
   ...props
@@ -29,10 +26,12 @@ export function ReactIcon({
         fill="#53C1DE"
       />
     </svg>
-  );
+  )
 }
 
-// --- Vue ---
+/**
+ * Vue brand icon.
+ */
 export function VueIcon({
   className = "h-4 w-4",
   ...props
@@ -54,10 +53,12 @@ export function VueIcon({
         fill="#35495E"
       />
     </svg>
-  );
+  )
 }
 
-// --- Next.js ---
+/**
+ * Next.js brand icon.
+ */
 export function NextIcon({
   className = "h-4 w-4",
   ...props
@@ -76,10 +77,12 @@ export function NextIcon({
         fill="currentColor"
       />
     </svg>
-  );
+  )
 }
 
-// --- LinkedIn (brand icon, viewBox 0 0 382 382) ---
+/**
+ * LinkedIn brand icon.
+ */
 export function LinkedInIcon({
   className = "h-4 w-4",
   ...props
@@ -105,10 +108,12 @@ export function LinkedInIcon({
 	L341.91,330.654L341.91,330.654z"
       />
     </svg>
-  );
+  )
 }
 
-// --- Email (envelope icon, viewBox 0 0 512 512) ---
+/**
+ * Envelope icon for email actions.
+ */
 export function EmailIcon({
   className = "h-4 w-4",
   ...props
@@ -138,5 +143,5 @@ export function EmailIcon({
 		c0,0.803-0.015,1.597-0.116,2.304l-1.386,9.472L329.012,265.409l156.36-136.418V388.572z"
       />
     </svg>
-  );
+  )
 }

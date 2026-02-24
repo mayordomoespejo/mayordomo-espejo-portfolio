@@ -7,10 +7,15 @@ import type { ProjectImage } from "@/lib/data/projects"
 import { IPhoneFrame, MacBookFrame, TerminalFrame, WireframeFrame } from "@/components/device-frame"
 import { useLocale } from "@/lib/locale-context"
 
-// Portrait frames (mobile/terminal) are ~620-665px tall by design.
-// On mobile we scale them down via CSS zoom (layout-affecting, unlike transform:scale)
-// so they fit without clipping. On sm+ they render at full size.
-function DeviceImage({ image }: { image: ProjectImage }) {
+type DeviceImageProps = {
+  image: ProjectImage
+}
+
+type ImageCarouselProps = {
+  images: ProjectImage[]
+}
+
+function DeviceImage({ image }: DeviceImageProps) {
   const portraitClass = "[zoom:0.8] sm:[zoom:1]"
 
   if (image.type === "terminal") {
@@ -39,14 +44,14 @@ const slideVariants = {
   exit: (dir: number) => ({ x: dir > 0 ? -180 : 180, opacity: 0 }),
 }
 
-export function ImageCarousel({ images }: { images: ProjectImage[] }) {
+/**
+ * Animated carousel for project screenshots with fixed viewport behavior.
+ */
+export function ImageCarousel({ images }: ImageCarouselProps) {
   const { t } = useLocale()
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(0)
 
-  // Computed ONCE from the full images array — never changes during navigation.
-  // This is what fixes the "jumping" problem: height is determined by the gallery
-  // type, not by whichever image is currently visible.
   const hasPortrait = useMemo(
     () => images.some((img) => img.type === "mobile" || img.type === "terminal"),
     [images]
@@ -74,20 +79,15 @@ export function ImageCarousel({ images }: { images: ProjectImage[] }) {
 
   const currentImage = images[current]
 
-  // Fixed height per gallery type — no dynamic changes on slide navigation.
-  // Portrait: h-[600px] on mobile (frames zoom:0.8), h-[740px] on sm+
-  // Landscape: shorter container
   const viewportClass = hasPortrait
     ? "h-[600px] sm:h-[740px]"
     : "h-[460px] sm:h-[500px]"
 
   return (
     <div className="overflow-hidden rounded-xl bg-secondary/50">
-      {/* Carousel viewport — FIXED height, never changes */}
       <div
         className={`relative flex items-center justify-center overflow-hidden ${viewportClass}`}
       >
-        {/* Prev */}
         <button
           onClick={goPrev}
           type="button"
@@ -96,8 +96,6 @@ export function ImageCarousel({ images }: { images: ProjectImage[] }) {
         >
           <ChevronLeft className="h-4 w-4 shrink-0" />
         </button>
-
-        {/* Slides */}
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={current}
@@ -115,8 +113,6 @@ export function ImageCarousel({ images }: { images: ProjectImage[] }) {
             <DeviceImage image={currentImage} />
           </motion.div>
         </AnimatePresence>
-
-        {/* Next */}
         <button
           onClick={goNext}
           type="button"
@@ -126,8 +122,6 @@ export function ImageCarousel({ images }: { images: ProjectImage[] }) {
           <ChevronRight className="h-4 w-4 shrink-0" />
         </button>
       </div>
-
-      {/* Dots + counter */}
       <div className="flex items-center justify-center gap-3 py-4">
         <span className="font-mono text-xs tabular-nums text-muted-foreground/60">
           {String(current + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
@@ -148,8 +142,6 @@ export function ImageCarousel({ images }: { images: ProjectImage[] }) {
           ))}
         </div>
       </div>
-
-      {/* Caption */}
       <div className="border-t border-border px-6 py-2.5">
         <p className="text-center text-xs text-muted-foreground/60">
           {currentImage.alt}

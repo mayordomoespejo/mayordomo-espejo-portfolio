@@ -4,18 +4,18 @@ import { EmailIcon, LinkedInIcon } from "@/components/icons"
 import { useLocale } from "@/lib/locale-context"
 import { PROFILE } from "@/lib/site-config"
 
+/**
+ * Global footer with copyright and social/contact links.
+ */
 export function Footer() {
   const { t } = useLocale()
 
   return (
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-5xl flex-row flex-wrap items-center justify-between gap-4 px-6 py-5">
-        {/* Left: copyright */}
         <p className="font-mono text-xs text-muted-foreground/40">
           © {new Date().getFullYear()} {PROFILE.name}
         </p>
-
-        {/* Right: social icons */}
         <div className="flex items-center gap-2">
           <a
             href={`mailto:${PROFILE.email}`}
