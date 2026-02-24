@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Users/Miguel/Documents/developer/mayordomoEspejoPorfolio/components/contact-cta.tsx:*)",
+      "Bash(/Users/Miguel/Documents/developer/mayordomoEspejoPorfolio/components/about-content.tsx:*)",
+      "Bash(/Users/Miguel/Documents/developer/mayordomoEspejoPorfolio/components/footer.tsx:*)",
+      "Bash(pnpm build)",
+      "Bash(for f in public/images/cover-*.png)",
+      "Bash(do echo -n \"$f: \")",
+      "Bash(python3 -c \" import struct, zlib with open\\(''$f'',''rb''\\) as f: sig = f.read\\(8\\) f.read\\(4\\) chunk = f.read\\(4\\) w,h = struct.unpack\\(''>II'', f.read\\(8\\)\\) print\\(f''{w}x{h}px''\\) \")",
+      "Bash(sips -g pixelWidth -g pixelHeight \"$f\")",
+      "Bash(done)"
+    ],
+    "additionalDirectories": [
+      "/Users/Miguel/.claude/projects/-Users-Miguel-Documents-developer-mayordomoEspejoPorfolio"
+    ]
+  }
+}
