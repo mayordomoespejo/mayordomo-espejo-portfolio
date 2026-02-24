@@ -87,7 +87,7 @@ export function AboutContent() {
           </h2>
 
           <div className="flex flex-col gap-3">
-            <div className="flex items-baseline justify-between gap-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
               <h3 className="font-medium text-foreground">
                 {t("about.experience.gyoza.title")}
               </h3>

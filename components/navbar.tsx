@@ -114,6 +114,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [hash, setHash] = useState(() => (typeof window === "undefined" ? "" : window.location.hash))
+  const [pendingScrollHref, setPendingScrollHref] = useState<string | null>(null)
   const { setTheme, resolvedTheme } = useTheme()
   const { locale, setLocale, t } = useLocale()
 
@@ -153,16 +154,42 @@ export function Navbar() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
 
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
-    setMobileOpen(false)
-    if (pathname !== "/") return
+  const scrollToSection = (href: string) => {
     if (href === "/") {
-      e.preventDefault()
       window.scrollTo({ top: 0, behavior: "smooth" })
-    } else if (href === "/#work") {
-      e.preventDefault()
+      return
+    }
+    if (href === "/#work") {
       document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
     }
+  }
+
+  useEffect(() => {
+    if (mobileOpen || !pendingScrollHref) return
+
+    const timeoutId = window.setTimeout(() => {
+      scrollToSection(pendingScrollHref)
+      setPendingScrollHref(null)
+    }, 280)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [mobileOpen, pendingScrollHref])
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    const isInPageSectionLink = pathname === "/" && (href === "/" || href === "/#work")
+    const menuWasOpen = mobileOpen
+
+    setMobileOpen(false)
+    if (!isInPageSectionLink) return
+
+    e.preventDefault()
+
+    if (menuWasOpen) {
+      setPendingScrollHref(href)
+      return
+    }
+
+    scrollToSection(href)
   }
 
   return (
