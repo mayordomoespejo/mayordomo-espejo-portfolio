@@ -47,7 +47,7 @@ export function IPhoneFrame({
       className={`relative inline-flex items-center justify-center ${className}`}
     >
       <div className="relative rounded-[2.5rem] border-[6px] border-[#1a1a1a] bg-[#1a1a1a]">
-        <div className="absolute left-1/2 top-2 z-10 h-[18px] w-[72px] -translate-x-1/2 rounded-full bg-[#1a1a1a]" />
+        <div className="absolute left-1/2 top-2 z-10 hidden h-[18px] w-[72px] -translate-x-1/2 rounded-full bg-[#1a1a1a] md:block" />
         <div className="relative h-[607px] w-[280px] overflow-hidden rounded-[2rem]">
           <FillFrameImage
             src={src}
@@ -75,7 +75,7 @@ export function MacBookFrame({
       className={`relative inline-flex flex-col items-center ${className}`}
     >
       <div className="relative rounded-t-xl border-[8px] border-[#1a1a1a] bg-[#1a1a1a]">
-        <div className="absolute left-1/2 top-[-4px] z-10 h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#333]" />
+        <div className="absolute left-1/2 top-[-4px] z-10 h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#333] md:hidden" />
         <div className="relative h-[320px] w-[640px] overflow-hidden rounded-[4px]">
           <FillFrameImage
             src={src}
@@ -131,9 +131,6 @@ export function TerminalFrame({
       className={`relative inline-flex flex-col items-center ${className}`}
     >
       <div className="relative rounded-2xl border-[10px] border-[#2c2c2c] bg-[#2c2c2c]">
-        <div className="absolute -top-[6px] left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5">
-          <div className="h-[6px] w-[6px] rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50" />
-        </div>
         <div className="relative h-[607px] w-[342px] overflow-hidden rounded-lg ring-1 ring-white/5">
           <FillFrameImage
             src={src}

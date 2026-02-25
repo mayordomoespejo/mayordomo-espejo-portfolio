@@ -33,6 +33,7 @@ export function useTranslatedProject(slug: string): Project | null {
       features: translation.features,
       results: translation.results,
       images,
+      ...(translation.howItWorks != null && { howItWorks: translation.howItWorks }),
     }
   }, [project, translation])
 }

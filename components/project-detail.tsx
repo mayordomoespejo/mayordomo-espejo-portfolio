@@ -28,7 +28,7 @@ type ProjectDetailProps = {
 
 function Section({ label, children }: SectionProps) {
   return (
-    <motion.div {...fadeUp} className="flex flex-col gap-3 border-t border-border/60 pb-1 pt-5">
+    <motion.div {...fadeUp} className="flex flex-col gap-3 border-y border-border/60 pb-5 pt-5">
       <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
         {label}
       </h2>
@@ -169,11 +169,11 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
             <h2 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">
               {t("project.keyFeatures")}
             </h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-col gap-2">
               {project.features.map((feature, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center rounded-md border border-border bg-secondary/50 px-2.5 py-1 text-xs leading-snug text-foreground/75"
+                  className="inline-flex w-full items-center rounded-md border border-border bg-secondary/50 px-2.5 py-1 text-xs leading-snug text-foreground/75"
                 >
                   {feature}
                 </span>
