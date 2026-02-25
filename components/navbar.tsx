@@ -113,7 +113,8 @@ export function Navbar() {
   )
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [hash, setHash] = useState(() => (typeof window === "undefined" ? "" : window.location.hash))
+  // Inicializar siempre "" para que SSR e hidratación coincidan; el hash real se aplica en useEffect
+  const [hash, setHash] = useState("")
   const [pendingScrollHref, setPendingScrollHref] = useState<string | null>(null)
   const { setTheme, resolvedTheme } = useTheme()
   const { locale, setLocale, t } = useLocale()
@@ -126,6 +127,7 @@ export function Navbar() {
 
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash)
+    setHash(window.location.hash)
     window.addEventListener("hashchange", onHashChange)
     return () => window.removeEventListener("hashchange", onHashChange)
   }, [])

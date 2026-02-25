@@ -27,6 +27,7 @@ export const translations = {
     "contact.title": "Trabajemos juntos",
 
     "work.sectionTitle": "Proyectos destacados",
+    "work.companyBadge": "Proyecto Gyoza",
 
     "project.allProjects": "Todos los proyectos",
     "project.visitProject": "Ver proyecto",
@@ -107,6 +108,7 @@ export const translations = {
     "contact.title": "Let's work together",
 
     "work.sectionTitle": "Selected Work",
+    "work.companyBadge": "Gyoza project",
 
     "project.allProjects": "All Projects",
     "project.visitProject": "Visit project",

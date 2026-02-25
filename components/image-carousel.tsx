@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useMemo } from "react"
+import { useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { ProjectImage } from "@/lib/data/projects"
@@ -52,11 +52,6 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(0)
 
-  const hasPortrait = useMemo(
-    () => images.some((img) => img.type === "mobile" || img.type === "terminal"),
-    [images]
-  )
-
   const goTo = useCallback(
     (index: number) => {
       setDirection(index > current ? 1 : -1)
@@ -79,15 +74,9 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
 
   const currentImage = images[current]
 
-  const viewportClass = hasPortrait
-    ? "h-[600px] sm:h-[740px]"
-    : "h-[460px] sm:h-[500px]"
-
   return (
     <div className="overflow-hidden rounded-xl bg-secondary/50">
-      <div
-        className={`relative flex items-center justify-center overflow-hidden ${viewportClass}`}
-      >
+      <div className="relative flex h-[600px] items-center justify-center overflow-hidden pt-[37px] pb-[21px]">
         <button
           onClick={goPrev}
           type="button"
@@ -108,7 +97,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
               x: { type: "spring", stiffness: 320, damping: 32 },
               opacity: { duration: 0.18 },
             }}
-            className="flex items-center justify-center px-8 py-6 sm:px-14"
+            className="flex items-center justify-center px-8 sm:px-14"
           >
             <DeviceImage image={currentImage} />
           </motion.div>

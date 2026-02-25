@@ -8,10 +8,34 @@ import { getAdjacentProjects } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ImageCarousel } from "@/components/image-carousel"
 import { TechTag } from "@/components/tech-tag"
+import { GyozaProjectBadge } from "@/components/company-badge"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp, EASE } from "@/lib/motion"
 import { getProjectCoverScaleClass } from "@/lib/project-cover"
+
+/** Splits "Project Name — Description" into parts for styling; returns null if no separator. */
+function splitProjectTitle(title: string): { name: string; description: string } | null {
+  const sep = " — "
+  const i = title.indexOf(sep)
+  if (i === -1) return null
+  return {
+    name: title.slice(0, i).trim(),
+    description: title.slice(i + sep.length).trim(),
+  }
+}
+
+/** Renders project title with name emphasized and description in italic (for nav links). */
+function ProjectNavLabel({ title }: { title: string }) {
+  const parts = splitProjectTitle(title)
+  if (!parts) return <>{title}</>
+  return (
+    <>
+      <span className="font-medium">{parts.name}</span>
+      <span className="italic"><span className="pr-1.5">—</span>{parts.description}</span>
+    </>
+  )
+}
 
 type SectionProps = {
   label: string
@@ -135,6 +159,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
             transition={{ duration: 0.5, delay: 0.13, ease: EASE }}
             className="flex flex-wrap items-center gap-2"
           >
+            {project.company === "Gyoza" && <GyozaProjectBadge />}
             {project.tags.map((tag) => (
               <TechTag key={tag} tag={tag} />
             ))}
@@ -274,14 +299,16 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           </motion.div>
         )}
 
-        <div className="flex items-center justify-between border-t border-border pt-6">
+        <div
+          className={`flex items-center justify-between ${project.images.length > 0 ? "border-t border-border pt-6" : ""}`}
+        >
           {prev ? (
             <Link
               href={`/projects/${prev.slug}`}
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
-              {getProjectTranslation(prev.slug, locale)?.title ?? prev.title}
+              <ArrowLeft className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" />
+              <ProjectNavLabel title={getProjectTranslation(prev.slug, locale)?.title ?? prev.title} />
             </Link>
           ) : (
             <span />
@@ -291,8 +318,8 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               href={`/projects/${next.slug}`}
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              {getProjectTranslation(next.slug, locale)?.title ?? next.title}
-              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              <ProjectNavLabel title={getProjectTranslation(next.slug, locale)?.title ?? next.title} />
+              <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           ) : (
             <span />

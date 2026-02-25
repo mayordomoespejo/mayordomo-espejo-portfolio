@@ -1,5 +1,11 @@
 /**
  * Translated content for each project (es/en). Merged with project base data in components.
+ *
+ * Image alt text pattern (use for imageAlts and for project.images[].alt in projects.ts):
+ * - Do not repeat the project name (user is already on that project page).
+ * - Format: "[Screen or section description] — [desktop|mobile]" (EN) / "[Descripción] — [escritorio|móvil]" (ES).
+ * - Same screen on desktop and mobile must use the same description; only the device suffix changes.
+ * - Keep wording consistent across projects (e.g. always "Homepage", "News section", "Welcome screen", "Results screen").
  */
 
 import type { Locale } from "../translations"
@@ -43,11 +49,9 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Los socios pueden aplicar precios de club y canjear cupones.",
       ],
       imageAlts: [
-        "Pantalla principal del kiosco con precios de pago por uso",
-        "Lavado en curso con temporizador",
-        "Lavado activo con tiempo y cantidad",
-        "Precios para socios con créditos bonus",
-        "Pantalla de selección de cupones",
+        "Pantalla de bienvenida — terminal",
+        "Lavado en curso — terminal",
+        "Pantalla de fin — terminal",
       ],
     },
     "turbowash-portal": {
@@ -74,9 +78,12 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Los cupones de fidelidad se muestran en la app y se canjean en el kiosco.",
       ],
       imageAlts: [
-        "Panel de Turbowash con código QR e historial de servicios",
-        "Lista de cupones de fidelidad",
-        "Pantalla de gestión de vehículos",
+        "Pantalla de bienvenida — móvil",
+        "Verificación — móvil",
+        "Resumen — móvil",
+        "Código QR — móvil",
+        "Historial de lavados — móvil",
+        "Lista de vehículos — móvil",
       ],
     },
     wetour: {
@@ -103,12 +110,16 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "El equipo gestiona contenidos vía CMS; los datos alimentan BI.",
       ],
       imageAlts: [
-        "Feed de la comunidad WeTour con filtros y publicaciones",
-        "Página de detalle de gimnasio Wezone Plaza Castilla",
-        "Perfil de usuario WeTour con insignias y logros",
-        "Listado de eventos en móvil",
-        "Vista de mapa móvil con ubicación de gimnasios",
-        "Detalle de gimnasio en móvil con reseñas",
+        "Pantalla de bienvenida — escritorio",
+        "Detalle de evento — escritorio",
+        "Vista de mapa — escritorio",
+        "Mapa con filtros — escritorio",
+        "Evento en el mapa — escritorio",
+        "Pantalla de bienvenida — móvil",
+        "Listado de eventos — móvil",
+        "Detalle de evento — móvil",
+        "Vista de mapa — móvil",
+        "Mapa con filtros — móvil",
       ],
     },
     "goiko-ordering": {
@@ -138,11 +149,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Tras confirmar, se sigue al repartidor en el mapa; los cupones se validan contra el BI de Goiko.",
       ],
       imageAlts: [
-        "Modal de producto Goiko con opciones de personalización de hamburguesa",
-        "Checkout escritorio con resumen del pedido",
-        "Menú móvil con combos y categorías de hamburguesas",
-        "Carrito móvil con productos y total",
-        "Checkout móvil con datos personales y recogida",
+        "Pantalla de bienvenida — móvil",
+        "Flujo de pasos — móvil",
+        "Paso de dirección — móvil",
+        "Paso de horario — móvil",
+        "Lista de productos — móvil",
+        "Estado preparando — móvil",
+        "Estado en reparto — móvil",
+        "Estado entregado — móvil",
       ],
     },
     "turbowash-admin": {
@@ -168,7 +182,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Actualiza precios y configuración de lavados mediante formularios con validación.",
         "Los cambios se guardan vía API; el equipo operativo puede trabajar sin depender de desarrollo para el día a día.",
       ],
-      imageAlts: ["Turbowash Panel de administración — placeholder para captura"],
+      imageAlts: [
+        "Pantalla de bienvenida — escritorio",
+        "Lista de ubicaciones — escritorio",
+        "Detalle de ubicación — escritorio",
+        "Formulario de ubicación — escritorio",
+        "Lista de ubicaciones — móvil",
+        "Detalle de ubicación — móvil",
+      ],
     },
     "goiko-customer-area": {
       title: "Goiko — Área de cliente",
@@ -193,7 +214,7 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Ve el historial de pedidos y puede lanzar un «repetir pedido» desde uno anterior.",
         "La sección de fidelidad y QR da acceso a los beneficios ligados a la cuenta Goiko.",
       ],
-      imageAlts: ["Goiko Área de cliente — placeholder para captura"],
+      imageAlts: [],
     },
     "goiko-invoicing": {
       title: "Goiko — Facturación",
@@ -218,7 +239,7 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Las vistas de facturación y estado de pago muestran lo pagado y lo pendiente.",
         "Los datos vienen de la API de facturación; exportación u otras acciones dependen del backend.",
       ],
-      imageAlts: ["Goiko Facturación — placeholder para captura"],
+      imageAlts: [],
     },
     "goiko-online-menu": {
       title: "Goiko — Menú digital",
@@ -243,7 +264,10 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "El contenido es multiidioma (i18n) y responsive; las imágenes se cargan en lazy.",
         "El menú es solo lectura; el pedido se hace en la app principal de Goiko. Los analytics (GTM) registran el uso.",
       ],
-      imageAlts: ["Goiko Menú digital — placeholder para captura"],
+      imageAlts: [
+        "Lista de productos — móvil",
+        "Detalle de producto — móvil",
+      ],
     },
     "goiko-table-ordering": {
       title: "Goiko — Pedidos en mesa",
@@ -268,7 +292,11 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "El pedido se envía a cocina; la pantalla muestra confirmación y estado.",
         "Los analytics (GTM) registran el uso para que el equipo pueda ver cómo funciona el flujo.",
       ],
-      imageAlts: ["Goiko Pedidos en mesa — placeholder para captura"],
+      imageAlts: [
+        "Pantalla de bienvenida — móvil",
+        "Lista de productos — móvil",
+        "Detalle de producto — móvil",
+      ],
     },
     "aee-corporate-web": {
       title: "AEE — Web corporativa",
@@ -293,7 +321,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "El multiidioma se resuelve con i18next; textos y fechas se adaptan al idioma elegido.",
         "Nuevas secciones o campañas se añaden desde el CMS; la estructura del sitio permite crecer sin tocar código.",
       ],
-      imageAlts: ["AEE Web corporativa — placeholder para captura"],
+      imageAlts: [
+        "Portada — escritorio",
+        "Sección Noticias — escritorio",
+        "Sección Explorar — escritorio",
+        "Sección Espacio e Igualdad — escritorio",
+        "Portada — móvil",
+        "Sección Actualidad — móvil",
+      ],
     },
     "pulse-video-manager": {
       title: "Pulse — Biblioteca de vídeos y listas",
@@ -318,7 +353,16 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "La vista «Hoy» muestra los entrenamientos programados del día; los reproductores consumen esa programación.",
         "La reproducción usa Media Chrome / Castable; el auth define quién puede gestionar contenido.",
       ],
-      imageAlts: ["Pulse Biblioteca de vídeos — placeholder para captura"],
+      imageAlts: [
+        "Pantalla de bienvenida — escritorio",
+        "Vista Hoy — escritorio",
+        "Biblioteca de vídeos — escritorio",
+        "Lista de etiquetas — escritorio",
+        "Vista Hoy — móvil",
+        "Biblioteca de vídeos — móvil",
+        "Lista de listas de reproducción — móvil",
+        "Lista de etiquetas — móvil",
+      ],
     },
     "time-tracking-billing": {
       title: "Control de tiempo — Facturación y licencias",
@@ -343,7 +387,7 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Las vistas de facturación y suscripciones muestran estado e historial; los datos vienen de la API backend.",
         "La búsqueda y los filtros en las tablas permiten localizar clientes o licencias concretos.",
       ],
-      imageAlts: ["Control de tiempo Facturación — placeholder para captura"],
+      imageAlts: [],
     },
     "time-tracking-workspace": {
       title: "Control de tiempo — Espacio de trabajo",
@@ -368,7 +412,10 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "El listado y el historial de facturas están disponibles; se puede filtrar por rango de fechas para revisar o generar facturas.",
         "i18n y maquetación responsive permiten usar la app en distintos idiomas y dispositivos.",
       ],
-      imageAlts: ["Control de tiempo Espacio de trabajo — placeholder para captura"],
+      imageAlts: [
+        "Pantalla de bienvenida — escritorio",
+        "Inicio — escritorio",
+      ],
     },
     wayvo: {
       title: "Wayvo — Planificador de viajes",
@@ -393,7 +440,13 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Checklist y enlaces a alojamiento ayudan a preparar y reservar; parte del contenido puede desbloquearse con premium.",
         "Las notificaciones push mantienen el engagement; el deep linking permite abrir un viaje o sección concreta.",
       ],
-      imageAlts: ["Wayvo Planificador de viajes — placeholder para captura"],
+      imageAlts: [
+        "Pantalla de bienvenida — móvil",
+        "Login — móvil",
+        "Chat — móvil",
+        "Detalle de viaje — móvil",
+        "Itinerario — móvil",
+      ],
     },
     "wezone-plan-recommendator": {
       title: "Wezone — Recomendador de planes",
@@ -418,7 +471,18 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "La app llama a la API de recomendación y muestra el plan sugerido y un CTA.",
         "Opcionalmente rellena un formulario de contacto para recibir el plan por email; el equipo comercial puede hacer seguimiento.",
       ],
-      imageAlts: ["Wezone Recomendador de planes — placeholder para captura"],
+      imageAlts: [
+        "Pantalla de bienvenida — escritorio",
+        "Flujo de pasos — escritorio",
+        "Flujo de pasos — escritorio",
+        "CTA — escritorio",
+        "Pantalla de resultados — escritorio",
+        "Pantalla de bienvenida — móvil",
+        "Flujo de pasos — móvil",
+        "Flujo de pasos — móvil",
+        "CTA — móvil",
+        "Pantalla de resultados — móvil",
+      ],
     },
   },
   en: {
@@ -446,11 +510,9 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Club members can apply loyalty pricing and redeem coupons.",
       ],
       imageAlts: [
-        "Turbowash terminal home screen with pay-per-use pricing",
-        "Turbowash wash in progress with countdown timer",
-        "Turbowash active wash with elapsed time and amount",
-        "Turbowash club member pricing with bonus credits",
-        "Turbowash coupon selection screen",
+        "Welcome screen — terminal",
+        "Wash in progress — terminal",
+        "End screen — terminal",
       ],
     },
     "turbowash-portal": {
@@ -477,9 +539,12 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Loyalty coupons are shown in the app and redeemed at the kiosk.",
       ],
       imageAlts: [
-        "Turbowash client dashboard with QR code and service history",
-        "Turbowash loyalty coupons list",
-        "Turbowash vehicle management screen",
+        "Welcome screen — mobile",
+        "Verification — mobile",
+        "Summary — mobile",
+        "QR code — mobile",
+        "Wash history — mobile",
+        "Vehicle list — mobile",
       ],
     },
     wetour: {
@@ -506,12 +571,16 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "The team manages content via CMS; data feeds into BI.",
       ],
       imageAlts: [
-        "WeTour community feed with topic filters and publications",
-        "WeTour gym detail page showing Wezone Plaza Castilla",
-        "WeTour user profile with badges and achievements",
-        "WeTour mobile events listing",
-        "WeTour mobile map view with gym locations",
-        "WeTour mobile gym detail with reviews",
+        "Welcome screen — desktop",
+        "Event detail — desktop",
+        "Map view — desktop",
+        "Map with filters — desktop",
+        "Event on map — desktop",
+        "Welcome screen — mobile",
+        "Events list — mobile",
+        "Event detail — mobile",
+        "Map view — mobile",
+        "Map with filters — mobile",
       ],
     },
     "goiko-ordering": {
@@ -541,11 +610,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "After confirming, rider is tracked on the map; coupons validated against Goiko BI.",
       ],
       imageAlts: [
-        "Goiko product detail modal with burger customization options",
-        "Goiko desktop checkout with order summary sidebar",
-        "Goiko mobile menu with combos and burger categories",
-        "Goiko mobile cart with order items and total",
-        "Goiko mobile checkout with personal data and pickup details",
+        "Welcome screen — mobile",
+        "Steps flow — mobile",
+        "Address step — mobile",
+        "Schedule step — mobile",
+        "Product list — mobile",
+        "Preparing status — mobile",
+        "Delivery status — mobile",
+        "Delivered status — mobile",
       ],
     },
     "turbowash-admin": {
@@ -571,7 +643,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Pricing and wash configuration are updated via forms with validation.",
         "Changes are saved through the API; the operations team works without developer involvement for day-to-day updates.",
       ],
-      imageAlts: ["Turbowash Administration Panel — placeholder for screenshot"],
+      imageAlts: [
+        "Welcome screen — desktop",
+        "Locations list — desktop",
+        "Location detail — desktop",
+        "Location form — desktop",
+        "Locations list — mobile",
+        "Location detail — mobile",
+      ],
     },
     "goiko-customer-area": {
       title: "Goiko — Customer Area",
@@ -596,7 +675,7 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Order history is displayed; the user can trigger a reorder from a past order.",
         "Loyalty and QR section gives access to benefits linked to the Goiko account.",
       ],
-      imageAlts: ["Goiko Customer Area — placeholder for screenshot"],
+      imageAlts: [],
     },
     "goiko-invoicing": {
       title: "Goiko — Invoicing",
@@ -621,7 +700,7 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Billing and payment status views give a clear picture of what is paid or pending.",
         "Data comes from the billing API; export or further actions depend on backend capabilities.",
       ],
-      imageAlts: ["Goiko Invoicing — placeholder for screenshot"],
+      imageAlts: [],
     },
     "goiko-online-menu": {
       title: "Goiko — Digital Menu",
@@ -646,7 +725,10 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Content is multi-language (i18n) and responsive; images are lazy-loaded.",
         "The menu is read-only; ordering is done in the main Goiko ordering app. Analytics (GTM) track usage.",
       ],
-      imageAlts: ["Goiko Digital Menu — placeholder for screenshot"],
+      imageAlts: [
+        "Product list — mobile",
+        "Product detail — mobile",
+      ],
     },
     "goiko-table-ordering": {
       title: "Goiko — Table Ordering",
@@ -671,7 +753,11 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Order is sent to the kitchen; the screen shows confirmation and status.",
         "Analytics (GTM) record usage so the team can see how the flow performs.",
       ],
-      imageAlts: ["Goiko Table Ordering — placeholder for screenshot"],
+      imageAlts: [
+        "Welcome screen — mobile",
+        "Product list — mobile",
+        "Product detail — mobile",
+      ],
     },
     "aee-corporate-web": {
       title: "AEE — Corporate Website",
@@ -696,7 +782,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Multi-language is handled with i18next; dates and copy adapt to the selected language.",
         "New sections or campaigns are added in the CMS; the site structure supports growth without code changes.",
       ],
-      imageAlts: ["AEE Corporate Website — placeholder for screenshot"],
+      imageAlts: [
+        "Homepage — desktop",
+        "News section — desktop",
+        "Explore section — desktop",
+        "Space and Equality section — desktop",
+        "Homepage — mobile",
+        "Current affairs section — mobile",
+      ],
     },
     "pulse-video-manager": {
       title: "Pulse — Video Library and Playlists",
@@ -721,7 +814,16 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "The \"Today\" view shows the scheduled workouts for the day; players consume this schedule.",
         "Video playback uses Media Chrome / Castable; auth controls who can manage content.",
       ],
-      imageAlts: ["Pulse Video Library — placeholder for screenshot"],
+      imageAlts: [
+        "Welcome screen — desktop",
+        "Today view — desktop",
+        "Video library — desktop",
+        "Tags list — desktop",
+        "Today view — mobile",
+        "Video library — mobile",
+        "Playlist list — mobile",
+        "Tags list — mobile",
+      ],
     },
     "time-tracking-billing": {
       title: "Time Tracking — Billing and Licenses",
@@ -746,7 +848,7 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Billing and subscription views show status and history; data comes from the backend API.",
         "Search and filters on tables make it easy to find specific customers or licence records.",
       ],
-      imageAlts: ["Time Tracking Billing — placeholder for screenshot"],
+      imageAlts: [],
     },
     "time-tracking-workspace": {
       title: "Time Tracking — Workspace",
@@ -771,7 +873,10 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Invoice list and history are available; user can filter by date range to review or generate invoices.",
         "i18n and responsive layout support different locales and devices.",
       ],
-      imageAlts: ["Time Tracking Workspace — placeholder for screenshot"],
+      imageAlts: [
+        "Welcome screen — desktop",
+        "Home — desktop",
+      ],
     },
     wayvo: {
       title: "Wayvo — Trip Planner",
@@ -796,7 +901,13 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "Checklist and accommodation links help prepare and book; some content can be premium-unlocked.",
         "Push notifications keep the user engaged; deep linking supports opening specific trips or sections.",
       ],
-      imageAlts: ["Wayvo Trip Planner — placeholder for screenshot"],
+      imageAlts: [
+        "Welcome screen — mobile",
+        "Login — mobile",
+        "Chat — mobile",
+        "Trip detail — mobile",
+        "Itinerary — mobile",
+      ],
     },
     "wezone-plan-recommendator": {
       title: "Wezone — Plan Recommender",
@@ -821,7 +932,18 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
         "The app calls the recommendation API and displays the suggested plan and a CTA.",
         "Optionally they fill in a contact form to receive the plan by email; the sales team can follow up.",
       ],
-      imageAlts: ["Wezone Plan Recommender — placeholder for screenshot"],
+      imageAlts: [
+        "Welcome screen — desktop",
+        "Steps flow — desktop",
+        "Steps flow — desktop",
+        "CTA — desktop",
+        "Results screen — desktop",
+        "Welcome screen — mobile",
+        "Steps flow — mobile",
+        "Steps flow — mobile",
+        "CTA — mobile",
+        "Results screen — mobile",
+      ],
     },
   },
 }

@@ -71,15 +71,22 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      <motion.a
+        href="/#work"
+        onClick={(e) => {
+          e.preventDefault()
+          document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
+          history.replaceState(null, "", "/#work")
+          window.dispatchEvent(new HashChangeEvent("hashchange"))
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-full p-2 text-muted-foreground/35 transition-colors hover:bg-secondary/50 hover:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2, ease: EASE }}
-        aria-hidden
+        aria-label={t("nav.work")}
       >
-        <ChevronDown className="h-4 w-4 animate-bounce-subtle text-muted-foreground/35" />
-      </motion.div>
+        <ChevronDown className="h-4 w-4 animate-bounce-subtle" />
+      </motion.a>
     </section>
   )
 }

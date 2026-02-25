@@ -1,10 +1,7 @@
 const BASE_SCALE = "scale-110"
 const HOVER_SCALE = "group-hover:scale-[1.15]"
 
-const COVER_SCALE_BY_SLUG: Record<string, { base: string; hover: string }> = {
-  "goiko-ordering": { base: "scale-[1.8]", hover: "group-hover:scale-[1.85]" },
-  wetour: { base: "scale-125", hover: "group-hover:scale-[1.3]" },
-}
+const COVER_SCALE_BY_SLUG: Record<string, { base: string; hover: string }> = {}
 
 /**
  * Returns CSS scale classes for project cover images by project slug.
