@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect, useState, useSyncExternalStore } from "react"
+import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -37,6 +37,7 @@ type NavControlsProps = {
   resolvedTheme: string | undefined
   toggleTheme: () => void
   t: (key: string) => string
+  onClose?: () => void
 }
 
 function NavControls({
@@ -46,6 +47,7 @@ function NavControls({
   resolvedTheme,
   toggleTheme,
   t,
+  onClose,
 }: NavControlsProps) {
   const isDark = mounted && resolvedTheme === "dark"
 
@@ -65,7 +67,7 @@ function NavControls({
       </a>
       <button
         type="button"
-        onClick={toggleTheme}
+        onClick={() => { toggleTheme(); onClose?.() }}
         className={ICON_BTN}
         aria-label={isDark ? t("nav.themeLight") : t("nav.themeDark")}
       >
@@ -74,7 +76,7 @@ function NavControls({
       <div className="flex h-8 overflow-hidden rounded-md border border-border">
         <button
           type="button"
-          onClick={() => setLocale("es")}
+          onClick={() => { setLocale("es"); onClose?.() }}
           className={cn(
             "flex h-full min-h-8 flex-1 items-center justify-center px-2.5 text-xs font-medium transition-colors",
             locale === "es"
@@ -86,7 +88,7 @@ function NavControls({
         </button>
         <button
           type="button"
-          onClick={() => setLocale("en")}
+          onClick={() => { setLocale("en"); onClose?.() }}
           className={cn(
             "flex h-full min-h-8 flex-1 items-center justify-center border-l border-border px-2.5 text-xs font-medium transition-colors",
             locale === "en"
@@ -150,6 +152,19 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [pathname])
 
+  const headerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const handler = (e: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMobileOpen(false)
+      }
+    }
+    document.addEventListener("pointerdown", handler)
+    return () => document.removeEventListener("pointerdown", handler)
+  }, [mobileOpen])
+
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
@@ -194,6 +209,7 @@ export function Navbar() {
 
   return (
     <header
+      ref={headerRef}
       className={cn(
         "fixed left-0 right-0 top-0 z-50 border-b border-border transition-all duration-300",
         scrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
@@ -293,6 +309,7 @@ export function Navbar() {
                   resolvedTheme={resolvedTheme}
                   toggleTheme={toggleTheme}
                   t={t}
+                  onClose={() => setMobileOpen(false)}
                 />
               </li>
             </ul>
