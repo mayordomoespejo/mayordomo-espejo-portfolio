@@ -13,7 +13,7 @@ export function FeaturedProjects() {
   const { t } = useLocale()
 
   return (
-    <section id="work" className="px-6 py-24">
+    <section id="projects" className="px-6 py-24">
       <div className="mx-auto flex max-w-5xl flex-col gap-10">
         <motion.div
           {...fadeUp}

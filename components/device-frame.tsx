@@ -80,6 +80,7 @@ export function IPhoneFrame({
 /**
  * Renders a desktop screenshot inside a MacBook-style frame.
  * Frame viewport matches standard desktop ratio (1512×945, 16:10); image uses object-contain so it fits without cropping.
+ * On mobile, the frame scales to fit the viewport (max-w-full) so it is fully visible.
  */
 export function MacBookFrame({
   src,
@@ -88,18 +89,17 @@ export function MacBookFrame({
 }: DeviceFrameProps) {
   return (
     <div
-      className={`relative inline-flex flex-col items-center ${className}`}
+      className={`relative flex w-full max-w-[640px] flex-col items-center ${className}`}
     >
-      <div className="relative rounded-t-xl border-[8px] border-[#1a1a1a] bg-[#1a1a1a]">
-        <div className="absolute left-1/2 top-[-4px] z-10 h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#333] md:hidden" />
+      <div className="relative w-full rounded-t-xl border-[8px] border-[#1a1a1a] bg-[#1a1a1a]">
         <div
-          className="relative w-[640px] overflow-hidden rounded-[4px]"
+          className="relative w-full overflow-hidden rounded-[4px]"
           style={{ aspectRatio: `${1512}/${945}` }}
         >
           <FillFrameImage
             src={src}
             alt={alt}
-            sizes="640px"
+            sizes="(max-width: 640px) 100vw, 640px"
             className="object-contain object-center"
           />
         </div>

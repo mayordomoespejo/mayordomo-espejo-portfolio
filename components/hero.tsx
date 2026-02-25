@@ -57,7 +57,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.34, ease: EASE }}
           >
             <Link
-              href="/#work"
+              href="/#projects"
               className="inline-flex h-11 items-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
             >
               {t("hero.viewWork")}
@@ -72,11 +72,11 @@ export function Hero() {
         </div>
       </div>
       <motion.a
-        href="/#work"
+        href="/#projects"
         onClick={(e) => {
           e.preventDefault()
-          document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
-          history.replaceState(null, "", "/#work")
+          document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+          history.replaceState(null, "", "/#projects")
           window.dispatchEvent(new HashChangeEvent("hashchange"))
         }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-full p-2 text-muted-foreground/35 transition-colors hover:bg-secondary/50 hover:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"

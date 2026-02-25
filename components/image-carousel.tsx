@@ -97,7 +97,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
               x: { type: "spring", stiffness: 320, damping: 32 },
               opacity: { duration: 0.18 },
             }}
-            className="flex items-center justify-center px-8 sm:px-14"
+            className="flex min-w-0 w-full items-center justify-center px-8 sm:px-14"
           >
             <DeviceImage image={currentImage} />
           </motion.div>
