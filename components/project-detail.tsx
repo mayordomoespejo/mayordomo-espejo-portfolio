@@ -13,6 +13,7 @@ import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp, EASE } from "@/lib/motion"
 import { getProjectCoverScaleClass } from "@/lib/project-cover"
+import { cn } from "@/lib/utils"
 
 /** Splits "Project Name — Description" into parts for styling; returns null if no separator. */
 function splitProjectTitle(title: string): { name: string; description: string } | null {
@@ -26,13 +27,21 @@ function splitProjectTitle(title: string): { name: string; description: string }
 }
 
 /** Renders project title with name emphasized and description in italic (for nav links). */
-function ProjectNavLabel({ title }: { title: string }) {
+function ProjectNavLabel({ title, align = "left" }: { title: string; align?: "left" | "right" }) {
   const parts = splitProjectTitle(title)
-  if (!parts) return <>{title}</>
+  if (!parts) return <span className="font-medium">{title}</span>
   return (
     <>
-      <span className="font-medium">{parts.name}</span>
-      <span className="italic"><span className="pr-1.5">—</span>{parts.description}</span>
+      <span className="hidden sm:inline">
+        <span className="font-medium">{parts.name}</span>
+        <span className="p-1.5">—</span>
+        <span className="italic">{parts.description}</span>
+      </span>
+
+      <span className={cn("flex flex-col sm:hidden", align === "right" && "items-end")}>
+        <span className="font-medium">{parts.name}</span>
+        <span className="text-xs italic opacity-60">{parts.description}</span>
+      </span>
     </>
   )
 }
@@ -318,7 +327,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               href={`/projects/${next.slug}`}
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <ProjectNavLabel title={getProjectTranslation(next.slug, locale)?.title ?? next.title} />
+              <ProjectNavLabel title={getProjectTranslation(next.slug, locale)?.title ?? next.title} align="right" />
               <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           ) : (
