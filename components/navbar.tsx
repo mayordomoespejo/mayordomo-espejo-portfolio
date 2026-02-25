@@ -24,7 +24,7 @@ function isActive(href: string, pathname: string, hash: string): boolean {
 const navLinks = [
   { href: "/", labelKey: "nav.home" as const },
   { href: "/about", labelKey: "nav.about" as const },
-  { href: "/#work", labelKey: "nav.work" as const },
+  { href: "/#projects", labelKey: "nav.work" as const },
 ]
 
 const ICON_BTN =
@@ -140,10 +140,10 @@ export function Navbar() {
     if (pathname !== "/") return
 
     const onScroll = () => {
-      const el = document.getElementById("work")
+      const el = document.getElementById("projects")
       if (!el) return
       const sectionTop = el.getBoundingClientRect().top + window.scrollY
-      const newHash = window.scrollY >= sectionTop ? "#work" : ""
+      const newHash = window.scrollY >= sectionTop ? "#projects" : ""
       const current = getCurrentHash()
       if (current !== newHash) {
         history.replaceState(null, "", pathname + newHash)
@@ -178,8 +178,8 @@ export function Navbar() {
       window.scrollTo({ top: 0, behavior: "smooth" })
       return
     }
-    if (href === "/#work") {
-      document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
+    if (href === "/#projects") {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
     }
   }
 
@@ -195,7 +195,7 @@ export function Navbar() {
   }, [mobileOpen, pendingScrollHref])
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
-    const isInPageSectionLink = pathname === "/" && (href === "/" || href === "/#work")
+    const isInPageSectionLink = pathname === "/" && (href === "/" || href === "/#projects")
     const menuWasOpen = mobileOpen
 
     setMobileOpen(false)

@@ -34,9 +34,9 @@ export function ProjectCard({
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/") return
     const currentHash = typeof window !== "undefined" ? window.location.hash : ""
-    if (currentHash === "#work") return
+    if (currentHash === "#projects") return
     e.preventDefault()
-    history.pushState(null, "", "/#work")
+    history.pushState(null, "", "/#projects")
     router.push(href)
   }
 

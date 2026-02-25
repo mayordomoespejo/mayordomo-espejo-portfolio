@@ -9,7 +9,8 @@
       "Bash(do echo -n \"$f: \")",
       "Bash(python3 -c \" import struct, zlib with open\\(''$f'',''rb''\\) as f: sig = f.read\\(8\\) f.read\\(4\\) chunk = f.read\\(4\\) w,h = struct.unpack\\(''>II'', f.read\\(8\\)\\) print\\(f''{w}x{h}px''\\) \")",
       "Bash(sips -g pixelWidth -g pixelHeight \"$f\")",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(pkill -f \"next dev\")"
     ],
     "additionalDirectories": [
       "/Users/Miguel/.claude/projects/-Users-Miguel-Documents-developer-mayordomoEspejoPorfolio"
