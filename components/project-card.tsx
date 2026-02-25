@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { TechTag } from "@/components/tech-tag"
+import { GyozaProjectBadge } from "@/components/company-badge"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { cn } from "@/lib/utils"
 import { EASE } from "@/lib/motion"
@@ -80,6 +81,7 @@ export function ProjectCard({
             {project.subtitle}
           </p>
           <div className="mt-auto flex flex-wrap gap-1.5 pt-1">
+            {project.company === "Gyoza" && <GyozaProjectBadge />}
             {project.tags.map((tag) => (
               <TechTag key={tag} tag={tag} />
             ))}

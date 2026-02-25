@@ -27,6 +27,7 @@ export const translations = {
     "contact.title": "Trabajemos juntos",
 
     "work.sectionTitle": "Proyectos destacados",
+    "work.companyBadge": "Proyecto Gyoza",
 
     "project.allProjects": "Todos los proyectos",
     "project.visitProject": "Ver proyecto",
@@ -74,6 +75,7 @@ export const translations = {
     "about.experience.gyoza.bullets": [
       "Apps multiplataforma con React y React Native (Expo).",
       "Formularios, validación (Formik/Yup), APIs y estado global (Zustand, TanStack Query).",
+      "Proyectos B2C y B2B: eCommerce, áreas de cliente, paneles de administración e integraciones (pago, mapas, CMS).",
       "Automatización con n8n y uso de IA (Cursor, OpenAI) en el flujo de trabajo.",
       "Colaboración en arquitectura y equipos multidisciplinares.",
     ],
@@ -84,7 +86,7 @@ export const translations = {
     "about.skills.langs.native": "Español (nativo)",
     "about.skills.langs.english": "Inglés – Intermedio-Alto (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Zustand · TanStack Query · Axios · Firebase · Formik · Yup · Sass · n8n · OpenAI · Git",
+      "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },
   en: {
     "nav.home": "Home",
@@ -106,6 +108,7 @@ export const translations = {
     "contact.title": "Let's work together",
 
     "work.sectionTitle": "Selected Work",
+    "work.companyBadge": "Gyoza project",
 
     "project.allProjects": "All Projects",
     "project.visitProject": "Visit project",
@@ -153,6 +156,7 @@ export const translations = {
     "about.experience.gyoza.bullets": [
       "Cross-platform apps with React and React Native (Expo).",
       "Forms, validation (Formik/Yup), APIs, and global state (Zustand, TanStack Query).",
+      "B2C and B2B products: eCommerce, customer areas, admin panels, and third-party integrations (payment, maps, CMS).",
       "Automation with n8n and AI tools (Cursor, OpenAI) in the workflow.",
       "Architecture input and collaboration with multidisciplinary teams.",
     ],
@@ -166,6 +170,6 @@ export const translations = {
     "about.skills.langs.native": "Spanish (Native)",
     "about.skills.langs.english": "English – Upper-Intermediate (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Zustand · TanStack Query · Axios · Firebase · Formik · Yup · Sass · n8n · OpenAI · Git",
+      "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },
 } as const
