@@ -3,30 +3,58 @@
 import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"
+import { GyozaIcon } from "@/components/icons"
 
 const SKILL_TAGS: Record<string, string[]> = {
   programming: [
     "JavaScript (ES6+)",
+    "TypeScript",
     "React",
     "React Native",
     "Next.js",
-    "Vue.js",
+    "Vue 3",
     "Expo",
     "Vite",
   ],
-  state: ["Zustand", "TanStack Query", "REST APIs", "Firebase", "Axios"],
+  state: [
+    "Zustand",
+    "TanStack Query",
+    "TanStack Table",
+    "Pinia",
+    "Vuex",
+    "REST APIs",
+    "Firebase",
+    "Axios",
+  ],
   forms: ["Formik", "Yup"],
   mobile: [
     "Expo Router",
     "React Navigation",
+    "React Native Maps",
     "Async Storage",
     "Firebase Auth",
-    "Maps",
     "WebView",
+    "Push Notifications",
   ],
   automation: ["n8n", "OpenAI", "RAG Systems", "Pinecone", "Cursor"],
-  ui: ["HTML5", "CSS3", "Sass (SCSS)", "Responsive Design", "React Select"],
-  build: ["Vite", "Expo EAS", "CI/CD", "Git", "GitHub", "Babel", "SWC"],
+  ui: [
+    "HTML5",
+    "CSS3",
+    "Sass (SCSS)",
+    "Responsive Design",
+    "React Select",
+    "i18n / i18next",
+  ],
+  build: [
+    "Vite",
+    "Expo EAS",
+    "Storybook",
+    "CI/CD",
+    "Git",
+    "GitHub",
+    "Babel",
+    "SWC",
+  ],
   quality: ["ESLint", "Testing Library", "Prettier"],
 }
 
@@ -88,7 +116,8 @@ export function AboutContent() {
 
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-              <h3 className="font-medium text-foreground">
+              <h3 className="flex items-center gap-2 font-medium text-foreground">
+                <GyozaIcon className="h-5 w-5 shrink-0 text-[#FA2F2F]" aria-hidden />
                 {t("about.experience.gyoza.title")}
               </h3>
               <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground/60">
