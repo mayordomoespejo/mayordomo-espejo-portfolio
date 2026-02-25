@@ -30,6 +30,16 @@ const navLinks = [
 const ICON_BTN =
   "flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
 
+const getCurrentHash = () => {
+  if (typeof window === "undefined") return ""
+  return new URL(window.document.URL).hash
+}
+
+const subscribeToHashChange = (callback: () => void) => {
+  window.addEventListener("hashchange", callback)
+  return () => window.removeEventListener("hashchange", callback)
+}
+
 type NavControlsProps = {
   locale: "es" | "en"
   setLocale: (locale: "es" | "en") => void
@@ -113,8 +123,7 @@ export function Navbar() {
   )
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  // Inicializar siempre "" para que SSR e hidratación coincidan; el hash real se aplica en useEffect
-  const [hash, setHash] = useState("")
+  const hash = useSyncExternalStore(subscribeToHashChange, getCurrentHash, () => "")
   const [pendingScrollHref, setPendingScrollHref] = useState<string | null>(null)
   const { setTheme, resolvedTheme } = useTheme()
   const { locale, setLocale, t } = useLocale()
@@ -126,13 +135,6 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
-    const onHashChange = () => setHash(window.location.hash)
-    setHash(window.location.hash)
-    window.addEventListener("hashchange", onHashChange)
-    return () => window.removeEventListener("hashchange", onHashChange)
-  }, [])
-
-  useEffect(() => {
     if (pathname !== "/") return
 
     const onScroll = () => {
@@ -140,7 +142,7 @@ export function Navbar() {
       if (!el) return
       const sectionTop = el.getBoundingClientRect().top + window.scrollY
       const newHash = window.scrollY >= sectionTop ? "#work" : ""
-      const current = window.location.hash
+      const current = getCurrentHash()
       if (current !== newHash) {
         history.replaceState(null, "", pathname + newHash)
         window.dispatchEvent(new HashChangeEvent("hashchange"))
