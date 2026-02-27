@@ -442,10 +442,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
       ],
       imageAlts: [
         "Pantalla de bienvenida — móvil",
-        "Login — móvil",
         "Chat — móvil",
+        "Conversación — móvil",
         "Detalle de viaje — móvil",
         "Itinerario — móvil",
+        "Checklist — móvil",
+        "Lista de viajes — móvil",
+        "Perfil — móvil",
+        "Suscripciones — móvil",
       ],
     },
     "wezone-plan-recommendator": {
@@ -903,10 +907,14 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
       ],
       imageAlts: [
         "Welcome screen — mobile",
-        "Login — mobile",
         "Chat — mobile",
+        "Conversation — mobile",
         "Trip detail — mobile",
         "Itinerary — mobile",
+        "Checklist — mobile",
+        "Travels list — mobile",
+        "Profile — mobile",
+        "Subscriptions — mobile",
       ],
     },
     "wezone-plan-recommendator": {
