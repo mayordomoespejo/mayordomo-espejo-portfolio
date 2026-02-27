@@ -71,10 +71,14 @@ export const projects: Project[] = [
     cover: "/images/cards/Wayvo.png",
     images: [
       { src: "/images/wayvo/01-wayvo-welcome-phone.png", alt: "Welcome screen — mobile", type: "mobile" },
-      { src: "/images/wayvo/02-wayvo-login-phone.png", alt: "Login — mobile", type: "mobile" },
-      { src: "/images/wayvo/03-wayvo-chat-phone.png", alt: "Chat — mobile", type: "mobile" },
-      { src: "/images/wayvo/04-wayvo-travel-phone.png", alt: "Trip detail — mobile", type: "mobile" },
-      { src: "/images/wayvo/05-wayvo-travel-phone.png", alt: "Itinerary — mobile", type: "mobile" },
+      { src: "/images/wayvo/02-wayvo-chat-phone.png", alt: "Chat — mobile", type: "mobile" },
+      { src: "/images/wayvo/03-wayvo-conversation-phone.png", alt: "Conversation — mobile", type: "mobile" },
+      { src: "/images/wayvo/04-wayvo-travel-detail-phone.png", alt: "Trip detail — mobile", type: "mobile" },
+      { src: "/images/wayvo/05-wayvo-travel-itinerary-phone.png", alt: "Itinerary — mobile", type: "mobile" },
+      { src: "/images/wayvo/06-wayvo-travel-checklist.png", alt: "Checklist — mobile", type: "mobile" },
+      { src: "/images/wayvo/07-wayvo-travels-list-phone.png", alt: "Travels list — mobile", type: "mobile" },
+      { src: "/images/wayvo/08-wayvo-profile-phone.png", alt: "Profile — mobile", type: "mobile" },
+      { src: "/images/wayvo/09-wayvo-subscriptions-phone.png", alt: "Subscriptions — mobile", type: "mobile" },
     ],
   },
   {
