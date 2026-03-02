@@ -12,7 +12,8 @@
       "Bash(done)",
       "Bash(pkill -f \"next dev\")",
       "Bash(pnpm add @vercel/analytics)",
-      "Bash(node -e \"require.resolve\\(''@vercel/analytics/next''\\)\")"
+      "Bash(node -e \"require.resolve\\(''@vercel/analytics/next''\\)\")",
+      "Bash(pnpm install)"
     ],
     "additionalDirectories": [
       "/Users/Miguel/.claude/projects/-Users-Miguel-Documents-developer-mayordomoEspejoPorfolio",

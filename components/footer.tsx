@@ -1,5 +1,6 @@
 "use client"
 
+import { ArrowDown } from "lucide-react"
 import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons"
 import { useLocale } from "@/lib/locale-context"
 import { PROFILE } from "@/lib/site-config"
@@ -41,6 +42,15 @@ export function Footer() {
             aria-label={t("nav.github")}
           >
             <GitHubIcon className="h-4 w-4" />
+          </a>
+          <a
+            href={PROFILE.cvUrl}
+            download
+            className="group relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-md border border-border text-xs font-semibold tracking-wider text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            aria-label={t("nav.cv")}
+          >
+            <span className="transition-all duration-200 group-hover:-translate-y-1 group-hover:opacity-0">CV</span>
+            <ArrowDown className="absolute h-4 w-4 translate-y-1 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100" />
           </a>
         </div>
       </div>

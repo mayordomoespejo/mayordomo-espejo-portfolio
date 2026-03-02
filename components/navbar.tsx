@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
+import { Moon, Sun, ArrowDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons"
 import { cn } from "@/lib/utils"
@@ -83,6 +83,15 @@ function NavControls({
         aria-label={t("nav.github")}
       >
         <GitHubIcon className="h-4 w-4" />
+      </a>
+      <a
+        href={PROFILE.cvUrl}
+        download
+        className={cn(ICON_BTN, "group relative overflow-hidden text-xs font-semibold tracking-wider")}
+        aria-label={t("nav.cv")}
+      >
+        <span className="transition-all duration-200 group-hover:-translate-y-1 group-hover:opacity-0">CV</span>
+        <ArrowDown className="absolute h-4 w-4 translate-y-1 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100" />
       </a>
       <button
         type="button"

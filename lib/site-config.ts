@@ -6,4 +6,5 @@ export const PROFILE = {
   email: "miguelmayordomoespejo@gmail.com",
   linkedInUrl: "https://www.linkedin.com/in/mayordomoespejo/",
   githubUrl: "https://github.com/mayordomoespejo",
+  cvUrl: "/MiguelMayordomoEspejo-CV.pdf",
 } as const
