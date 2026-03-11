@@ -11,6 +11,7 @@ export const translations = {
     "nav.home": "Inicio",
     "nav.about": "Sobre mí",
     "nav.work": "Proyectos",
+    "nav.lab": "Lab",
     "nav.linkedIn": "LinkedIn ↗",
     "nav.github": "GitHub ↗",
     "nav.cv": "Descargar CV",
@@ -25,6 +26,12 @@ export const translations = {
     "hero.location": "Alicante, España · Remoto y reubicación",
     "hero.viewWork": "Proyectos",
     "hero.aboutMe": "Sobre mí",
+    "hero.lab": "Lab",
+
+    "lab.sectionTitle": "Lab",
+    "lab.description":
+      "Proyectos personales y experimentos que comparto en GitHub. Ideas en proceso, herramientas de uso propio y código libre.",
+    "lab.viewOnGithub": "Ver en GitHub",
 
     "contact.title": "Trabajemos juntos",
 
@@ -94,6 +101,7 @@ export const translations = {
     "nav.home": "Home",
     "nav.about": "About",
     "nav.work": "Projects",
+    "nav.lab": "Lab",
     "nav.linkedIn": "LinkedIn ↗",
     "nav.github": "GitHub ↗",
     "nav.cv": "Download CV",
@@ -108,6 +116,12 @@ export const translations = {
     "hero.location": "Alicante, Spain · Open to Remote & Relocation",
     "hero.viewWork": "Projects",
     "hero.aboutMe": "About Me",
+    "hero.lab": "Lab",
+
+    "lab.sectionTitle": "Lab",
+    "lab.description":
+      "Personal projects and experiments I share on GitHub. Work in progress, self-use tools, and open code.",
+    "lab.viewOnGithub": "View on GitHub",
 
     "contact.title": "Let's work together",
 

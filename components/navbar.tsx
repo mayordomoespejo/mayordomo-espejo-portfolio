@@ -23,8 +23,9 @@ function isActive(href: string, pathname: string, hash: string): boolean {
 
 const navLinks = [
   { href: "/", labelKey: "nav.home" as const },
-  { href: "/about", labelKey: "nav.about" as const },
   { href: "/#projects", labelKey: "nav.work" as const },
+  { href: "/#lab", labelKey: "nav.lab" as const },
+  { href: "/about", labelKey: "nav.about" as const },
 ]
 
 const ICON_BTN =
@@ -158,10 +159,19 @@ export function Navbar() {
     if (pathname !== "/") return
 
     const onScroll = () => {
-      const el = document.getElementById("projects")
-      if (!el) return
-      const sectionTop = el.getBoundingClientRect().top + window.scrollY
-      const newHash = window.scrollY >= sectionTop ? "#projects" : ""
+      const projectsEl = document.getElementById("projects")
+      const labEl = document.getElementById("lab")
+      const projectsTop = projectsEl
+        ? projectsEl.getBoundingClientRect().top + window.scrollY
+        : Infinity
+      const labTop = labEl
+        ? labEl.getBoundingClientRect().top + window.scrollY
+        : Infinity
+
+      let newHash = ""
+      if (window.scrollY >= labTop) newHash = "#lab"
+      else if (window.scrollY >= projectsTop) newHash = "#projects"
+
       const current = getCurrentHash()
       if (current !== newHash) {
         history.replaceState(null, "", pathname + newHash)
@@ -199,6 +209,9 @@ export function Navbar() {
     if (href === "/#projects") {
       document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
     }
+    if (href === "/#lab") {
+      document.getElementById("lab")?.scrollIntoView({ behavior: "smooth" })
+    }
   }
 
   useEffect(() => {
@@ -213,7 +226,7 @@ export function Navbar() {
   }, [mobileOpen, pendingScrollHref])
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
-    const isInPageSectionLink = pathname === "/" && (href === "/" || href === "/#projects")
+    const isInPageSectionLink = pathname === "/" && (href === "/" || href === "/#projects" || href === "/#lab")
     const menuWasOpen = mobileOpen
 
     setMobileOpen(false)
