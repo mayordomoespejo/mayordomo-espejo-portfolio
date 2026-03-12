@@ -89,13 +89,14 @@ export const translations = {
     "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remoto)",
     "about.experience.gyoza.date": "Febrero 2024 – Actualidad",
     "about.experience.gyoza.summary":
-      "Desarrollo y mantenimiento de aplicaciones web y móviles en producción, enfocadas en rendimiento, estabilidad y experiencia de usuario.",
+      "Desarrollo y mantenimiento de aplicaciones web y móviles en producción, entregando productos B2C y B2B escalables con foco en rendimiento, fiabilidad y experiencia de usuario.",
     "about.experience.gyoza.bullets": [
-      "Apps multiplataforma con React y React Native (Expo).",
-      "Formularios, validación (Formik/Yup), APIs y estado global (Zustand, TanStack Query).",
-      "Proyectos B2C y B2B: eCommerce, áreas de cliente, paneles de administración e integraciones (pago, mapas, CMS).",
-      "Automatización con n8n y uso de IA (Cursor, OpenAI) en el flujo de trabajo.",
-      "Colaboración en arquitectura y equipos multidisciplinares.",
+      "Desarrollo y mantenimiento de aplicaciones web y móviles multiplataforma en producción con React, React Native y Expo.",
+      "Construcción de formularios y sistemas de validación complejos con Formik, Yup, Zod y react-hook-form; integración de APIs REST y servicios de terceros (pagos, mapas, CMS).",
+      "Gestión del estado global con Zustand e implementación de sincronización de datos y caché con TanStack Query, mejorando significativamente el rendimiento y la fiabilidad.",
+      "Diseño de interfaces responsive con HTML5, CSS3 y SCSS en productos B2C y B2B: plataformas eCommerce, áreas de cliente y paneles de administración.",
+      "Automatización de flujos internos con n8n y uso de herramientas de IA (Cursor, OpenAI, Codex) para refactorización y productividad.",
+      "Participación en decisiones técnicas y diseño de arquitectura en equipos ágiles y multidisciplinares; control de versiones con Git y GitHub.",
     ],
     "about.education.items": [
       { year: "2024", label: "Técnico Superior en Desarrollo de Aplicaciones Web — ILERNA FP" },
@@ -188,13 +189,14 @@ export const translations = {
     "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remote)",
     "about.experience.gyoza.date": "February 2024 – Present",
     "about.experience.gyoza.summary":
-      "Development and maintenance of web and mobile applications in production, focused on performance, stability and user experience.",
+      "Development and maintenance of production-grade web and mobile applications, delivering scalable B2C and B2B products focused on performance, reliability, and user experience.",
     "about.experience.gyoza.bullets": [
-      "Cross-platform apps with React and React Native (Expo).",
-      "Forms, validation (Formik/Yup), APIs, and global state (Zustand, TanStack Query).",
-      "B2C and B2B products: eCommerce, customer areas, admin panels, and third-party integrations (payment, maps, CMS).",
-      "Automation with n8n and AI tools (Cursor, OpenAI) in the workflow.",
-      "Architecture input and collaboration with multidisciplinary teams.",
+      "Develop and maintain production-grade cross-platform web and mobile applications using React, React Native, and Expo.",
+      "Build complex forms and validation systems with Formik, Yup, Zod, and react-hook-form; integrate REST APIs and third-party services including payments, maps, and CMS.",
+      "Manage global application state with Zustand and implement data synchronisation and caching with TanStack Query, significantly improving performance and reliability.",
+      "Design responsive interfaces with HTML5, CSS3, and SCSS across B2C and B2B products: eCommerce platforms, customer areas, and admin panels.",
+      "Automate internal workflows with n8n and leverage AI tools (Cursor, OpenAI, Codex) for refactoring and development productivity.",
+      "Participate in technical decision-making and architecture design within agile, multidisciplinary teams; version control with Git and GitHub.",
     ],
     "about.education.items": [
       { year: "2024", label: "Higher Technician in Web Application Development — ILERNA FP" },
