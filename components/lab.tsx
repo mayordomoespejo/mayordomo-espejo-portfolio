@@ -1,20 +1,27 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"
-import { projects } from "@/lib/data/projects"
-import type { Project } from "@/lib/data/projects"
+import { labProjects } from "@/lib/data/lab-projects"
+import type { LabProject } from "@/lib/data/lab-projects"
 
-/** Compact card for the marquee rows — image fills all, text overlaid */
-function MarqueeCard({ project }: { project: Project }) {
+/** Card for lab projects — logo centered on coloured background */
+function LabCard({ project }: { project: LabProject }) {
   return (
-    <div className="group/card relative mr-2 w-64 shrink-0 cursor-pointer overflow-hidden" style={{ aspectRatio: "4/3" }}>
+    <Link
+      href={`/lab/${project.slug}`}
+      className="group/card relative mr-2 block w-64 shrink-0 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      style={{ aspectRatio: "4/3", background: project.bg }}
+    >
+      {/* Logo — centred with padding */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={project.cover}
+        src={project.logo}
         alt={project.title}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+        className="absolute inset-0 m-auto h-1/2 w-3/4 object-contain transition-transform duration-700 group-hover/card:scale-105"
+        style={{ top: 0, left: 0, right: 0, bottom: 0 }}
         draggable={false}
       />
       {/* Gradient overlay — always present, intensifies on hover */}
@@ -26,7 +33,7 @@ function MarqueeCard({ project }: { project: Project }) {
           {project.stack.slice(0, 2).join(" · ")}
         </p>
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -35,7 +42,7 @@ function MarqueeRow({
   items,
   animClass,
 }: {
-  items: Project[]
+  items: LabProject[]
   animClass: string
 }) {
   return (
@@ -43,7 +50,7 @@ function MarqueeRow({
       <div className={`marquee-track flex w-max ${animClass}`}>
         {/* Duplicate items so the loop is seamless */}
         {[...items, ...items].map((p, i) => (
-          <MarqueeCard key={`${p.slug}-${i}`} project={p} />
+          <LabCard key={`${p.slug}-${i}`} project={p} />
         ))}
       </div>
     </div>
@@ -51,12 +58,12 @@ function MarqueeRow({
 }
 
 /**
- * Lab section — two-row infinite marquee of projects + GitHub CTA.
- * Row 1 scrolls left, row 2 scrolls right, both pause on hover.
+ * Lab section — three-row infinite marquee of personal projects.
+ * Row 1 scrolls left, row 2 scrolls right, row 3 scrolls left.
  */
 export function Lab() {
   const { t } = useLocale()
-  const reversed = [...projects].reverse()
+  const reversed = [...labProjects].reverse()
 
   return (
     <section id="lab" className="flex h-screen flex-col pt-24">
@@ -71,9 +78,9 @@ export function Lab() {
 
       {/* Marquee — centered in remaining space */}
       <div className="flex flex-1 flex-col justify-center gap-2">
-        <MarqueeRow items={projects} animClass="animate-marquee" />
+        <MarqueeRow items={labProjects} animClass="animate-marquee" />
         <MarqueeRow items={reversed} animClass="animate-marquee-reverse" />
-        <MarqueeRow items={projects} animClass="animate-marquee [animation-duration:72s]" />
+        <MarqueeRow items={labProjects} animClass="animate-marquee [animation-duration:72s]" />
       </div>
     </section>
   )

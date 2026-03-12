@@ -32,6 +32,12 @@ export const translations = {
     "lab.description":
       "Proyectos personales y experimentos que comparto en GitHub. Ideas en proceso, herramientas de uso propio y código libre.",
     "lab.viewOnGithub": "Ver en GitHub",
+    "lab.allProjects": "Todos los proyectos de Lab",
+    "lab.viewOnGithubShort": "GitHub ↗",
+    "lab.visitProject": "Ver proyecto ↗",
+    "lab.keyFeatures": "Qué construí",
+    "lab.howItWorks": "Cómo funciona",
+    "lab.gallery": "Galería",
 
     "contact.title": "Trabajemos juntos",
 
@@ -122,6 +128,12 @@ export const translations = {
     "lab.description":
       "Personal projects and experiments I share on GitHub. Work in progress, self-use tools, and open code.",
     "lab.viewOnGithub": "View on GitHub",
+    "lab.allProjects": "All Lab Projects",
+    "lab.viewOnGithubShort": "GitHub ↗",
+    "lab.visitProject": "Visit project ↗",
+    "lab.keyFeatures": "What I Built",
+    "lab.howItWorks": "How It Works",
+    "lab.gallery": "Gallery",
 
     "contact.title": "Let's work together",
 
