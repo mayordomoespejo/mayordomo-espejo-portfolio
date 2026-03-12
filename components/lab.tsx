@@ -46,7 +46,7 @@ function MarqueeRow({
   animClass: string
 }) {
   return (
-    <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+    <div className="overflow-hidden">
       <div className={`marquee-track flex w-max ${animClass}`}>
         {/* Duplicate items so the loop is seamless */}
         {[...items, ...items].map((p, i) => (

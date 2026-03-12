@@ -29,9 +29,6 @@ export const translations = {
     "hero.lab": "Lab",
 
     "lab.sectionTitle": "Lab",
-    "lab.description":
-      "Proyectos personales y experimentos que comparto en GitHub. Ideas en proceso, herramientas de uso propio y código libre.",
-    "lab.viewOnGithub": "Ver en GitHub",
     "lab.allProjects": "Todos los proyectos de Lab",
     "lab.viewOnGithubShort": "GitHub ↗",
     "lab.visitProject": "Ver proyecto ↗",
@@ -80,7 +77,13 @@ export const translations = {
     "about.skills.build": "Build y herramientas",
     "about.skills.quality": "Calidad de código",
     "about.skills.languages": "Idiomas",
+    "tech.development": "Desarrollo",
+    "tech.ui": "UI",
+
     "about.education.title": "Educación",
+    "about.certifications.title": "Certificaciones",
+    "about.certifications.view": "Ver diploma",
+    "about.certifications.close": "Cerrar",
     "about.experience.title": "Experiencia profesional",
     "about.coreStack.title": "Stack principal",
     "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remoto)",
@@ -101,7 +104,7 @@ export const translations = {
     "about.skills.langs.native": "Español (nativo)",
     "about.skills.langs.english": "Inglés – Intermedio-Alto (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
+      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },
   en: {
     "nav.home": "Home",
@@ -125,9 +128,6 @@ export const translations = {
     "hero.lab": "Lab",
 
     "lab.sectionTitle": "Lab",
-    "lab.description":
-      "Personal projects and experiments I share on GitHub. Work in progress, self-use tools, and open code.",
-    "lab.viewOnGithub": "View on GitHub",
     "lab.allProjects": "All Lab Projects",
     "lab.viewOnGithubShort": "GitHub ↗",
     "lab.visitProject": "Visit project ↗",
@@ -176,7 +176,13 @@ export const translations = {
     "about.skills.build": "Build & Tooling",
     "about.skills.quality": "Code Quality",
     "about.skills.languages": "Languages",
+    "tech.development": "Development",
+    "tech.ui": "UI",
+
     "about.education.title": "Education",
+    "about.certifications.title": "Certifications",
+    "about.certifications.view": "View certificate",
+    "about.certifications.close": "Close",
     "about.experience.title": "Professional Experience",
     "about.coreStack.title": "Core Stack",
     "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remote)",
@@ -200,6 +206,6 @@ export const translations = {
     "about.skills.langs.native": "Spanish (Native)",
     "about.skills.langs.english": "English – Upper-Intermediate (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
+      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },
 } as const
