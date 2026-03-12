@@ -104,7 +104,7 @@ export const translations = {
     "about.skills.langs.native": "Español (nativo)",
     "about.skills.langs.english": "Inglés – Intermedio-Alto (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
+      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · OpenAI · Git",
   },
   en: {
     "nav.home": "Home",
@@ -206,6 +206,6 @@ export const translations = {
     "about.skills.langs.native": "Spanish (Native)",
     "about.skills.langs.english": "English – Upper-Intermediate (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
+      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · OpenAI · Git",
   },
 } as const

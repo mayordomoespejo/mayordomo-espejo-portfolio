@@ -42,16 +42,18 @@ const SKILL_TAGS: Record<string, string[]> = {
     "WebView",
     "Push Notifications",
   ],
-  automation: ["n8n", "OpenAI", "RAG Systems", "Pinecone", "Cursor"],
+  automation: ["n8n", "OpenAI", "Codex", "RAG Systems", "Pinecone", "Cursor"],
   ui: [
     "HTML5",
     "CSS3",
     "Sass (SCSS)",
     "Tailwind CSS",
+    "Bootstrap",
     "Responsive Design",
+    "React Select",
     "i18n / i18next",
   ],
-  build: ["Vite", "Expo EAS", "Storybook", "CI/CD", "Git", "GitHub", "SWC"],
+  build: ["Vite", "Expo EAS", "Storybook", "CI/CD", "Git", "GitHub", "Babel", "SWC"],
   quality: ["ESLint", "Vitest", "Testing Library", "Playwright", "Prettier"],
 }
 
@@ -75,11 +77,32 @@ interface Certification {
   issuer: string
   date: string
   skills: string[]
-  /** Path under /public */
-  image: string
+  /** Path under /public — omit if no certificate image is available yet */
+  image?: string
 }
 
 const CERTIFICATIONS: Certification[] = [
+  {
+    name: "AI-Driven Development from Zero to Production",
+    nameEs: "Desarrollo con IA: de 0 a producción",
+    issuer: "BIGschool",
+    date: "2026",
+    skills: ["AI Tools", "Cursor", "OpenAI", "Codex", "Prompt Engineering", "Automation"],
+  },
+  {
+    name: "Responsive Web Design",
+    nameEs: "Diseño Web Adaptable",
+    issuer: "freeCodeCamp",
+    date: "2026",
+    skills: ["HTML5", "CSS3", "Responsive Design", "Flexbox", "CSS Grid"],
+  },
+  {
+    name: "B1 English for Developers",
+    nameEs: "Inglés B1 para Desarrolladores",
+    issuer: "freeCodeCamp",
+    date: "2026",
+    skills: ["English", "Technical Communication", "Developer Vocabulary"],
+  },
   {
     name: "Advanced Java",
     nameEs: "Java Avanzado",
@@ -189,13 +212,15 @@ function CertCard({
       </div>
 
       {/* Thumbnail — right side, centrado verticalmente respecto al contenido */}
-      <div className="flex items-center self-stretch pl-4">
-      <CertThumbnail
-        src={cert.image}
-        title={name}
-        onClick={() => onView(cert.image, name)}
-      />
-      </div>
+      {cert.image && (
+        <div className="flex items-center self-stretch pl-4">
+          <CertThumbnail
+            src={cert.image}
+            title={name}
+            onClick={() => onView(cert.image!, name)}
+          />
+        </div>
+      )}
     </div>
   )
 }
