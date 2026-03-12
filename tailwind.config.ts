@@ -59,9 +59,19 @@ const config: Config = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(5px)' },
         },
+        'marquee': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          from: { transform: 'translateX(-50%)' },
+          to: { transform: 'translateX(0)' },
+        },
       },
       animation: {
         'bounce-subtle': 'bounce-subtle 2.2s ease-in-out infinite',
+        'marquee': 'marquee 90s linear infinite',
+        'marquee-reverse': 'marquee-reverse 120s linear infinite',
       },
     },
   },

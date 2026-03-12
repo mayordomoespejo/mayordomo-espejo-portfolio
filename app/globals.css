@@ -11,6 +11,19 @@
   }
 }
 
+@layer components {
+  /* Pause the whole marquee row when hovering anywhere on it */
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+}
+
 @layer base {
   /* Dark (night) — default when system prefers dark or user chose dark */
   :root,

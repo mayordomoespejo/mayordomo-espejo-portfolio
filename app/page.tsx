@@ -8,9 +8,7 @@ export default function Page() {
     <>
       <Hero />
       <FeaturedProjects />
-      <div className="h-px bg-border/60" aria-hidden />
       <Lab />
-      <div className="h-px bg-border/60" aria-hidden />
       <ContactCTA />
     </>
   )
