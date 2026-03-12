@@ -1,5 +1,6 @@
 "use client"
 
+import { useRef, useEffect } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
@@ -11,7 +12,17 @@ import { PROFILE } from "@/lib/site-config"
  * Hero section of the portfolio landing page.
  */
 export function Hero() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
+  const ctaRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const container = ctaRef.current
+    if (!container) return
+    const buttons = Array.from(container.querySelectorAll<HTMLElement>("a"))
+    buttons.forEach((b) => b.style.removeProperty("width"))
+    const maxW = Math.max(...buttons.map((b) => b.getBoundingClientRect().width))
+    if (maxW > 0) buttons.forEach((b) => { b.style.width = `${maxW}px` })
+  }, [locale])
 
   return (
     <section className="relative flex min-h-[100vh] flex-col justify-center px-6 pb-16 pt-28">
@@ -51,20 +62,27 @@ export function Hero() {
             {t("hero.location")}
           </motion.p>
           <motion.div
-            className="flex flex-wrap items-center gap-3 pt-1"
+            ref={ctaRef}
+            className="flex flex-wrap gap-3 pt-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.34, ease: EASE }}
           >
             <Link
               href="/#projects"
-              className="inline-flex h-11 items-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
             >
               {t("hero.viewWork")}
             </Link>
             <Link
+              href="/#lab"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+            >
+              {t("hero.lab")}
+            </Link>
+            <Link
               href="/about"
-              className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               {t("hero.aboutMe")}
             </Link>

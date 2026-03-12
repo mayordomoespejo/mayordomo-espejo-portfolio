@@ -11,6 +11,7 @@ export const translations = {
     "nav.home": "Inicio",
     "nav.about": "Sobre mí",
     "nav.work": "Proyectos",
+    "nav.lab": "Lab",
     "nav.linkedIn": "LinkedIn ↗",
     "nav.github": "GitHub ↗",
     "nav.cv": "Descargar CV",
@@ -25,6 +26,15 @@ export const translations = {
     "hero.location": "Alicante, España · Remoto y reubicación",
     "hero.viewWork": "Proyectos",
     "hero.aboutMe": "Sobre mí",
+    "hero.lab": "Lab",
+
+    "lab.sectionTitle": "Lab",
+    "lab.allProjects": "Todos los proyectos de Lab",
+    "lab.viewOnGithubShort": "GitHub ↗",
+    "lab.visitProject": "Ver proyecto ↗",
+    "lab.keyFeatures": "Qué construí",
+    "lab.howItWorks": "Cómo funciona",
+    "lab.gallery": "Galería",
 
     "contact.title": "Trabajemos juntos",
 
@@ -67,7 +77,13 @@ export const translations = {
     "about.skills.build": "Build y herramientas",
     "about.skills.quality": "Calidad de código",
     "about.skills.languages": "Idiomas",
+    "tech.development": "Desarrollo",
+    "tech.ui": "UI",
+
     "about.education.title": "Educación",
+    "about.certifications.title": "Certificaciones",
+    "about.certifications.view": "Ver diploma",
+    "about.certifications.close": "Cerrar",
     "about.experience.title": "Experiencia profesional",
     "about.coreStack.title": "Stack principal",
     "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remoto)",
@@ -88,12 +104,13 @@ export const translations = {
     "about.skills.langs.native": "Español (nativo)",
     "about.skills.langs.english": "Inglés – Intermedio-Alto (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
+      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },
   en: {
     "nav.home": "Home",
     "nav.about": "About",
     "nav.work": "Projects",
+    "nav.lab": "Lab",
     "nav.linkedIn": "LinkedIn ↗",
     "nav.github": "GitHub ↗",
     "nav.cv": "Download CV",
@@ -108,6 +125,15 @@ export const translations = {
     "hero.location": "Alicante, Spain · Open to Remote & Relocation",
     "hero.viewWork": "Projects",
     "hero.aboutMe": "About Me",
+    "hero.lab": "Lab",
+
+    "lab.sectionTitle": "Lab",
+    "lab.allProjects": "All Lab Projects",
+    "lab.viewOnGithubShort": "GitHub ↗",
+    "lab.visitProject": "Visit project ↗",
+    "lab.keyFeatures": "What I Built",
+    "lab.howItWorks": "How It Works",
+    "lab.gallery": "Gallery",
 
     "contact.title": "Let's work together",
 
@@ -150,7 +176,13 @@ export const translations = {
     "about.skills.build": "Build & Tooling",
     "about.skills.quality": "Code Quality",
     "about.skills.languages": "Languages",
+    "tech.development": "Development",
+    "tech.ui": "UI",
+
     "about.education.title": "Education",
+    "about.certifications.title": "Certifications",
+    "about.certifications.view": "View certificate",
+    "about.certifications.close": "Close",
     "about.experience.title": "Professional Experience",
     "about.coreStack.title": "Core Stack",
     "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remote)",
@@ -174,6 +206,6 @@ export const translations = {
     "about.skills.langs.native": "Spanish (Native)",
     "about.skills.langs.english": "English – Upper-Intermediate (B2+)",
     "about.coreStack.text":
-      "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
+      "React · React Native · Expo · Vite · Next.js · Angular · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },
 } as const

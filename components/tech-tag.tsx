@@ -1,3 +1,6 @@
+"use client"
+
+import { useLocale } from "@/lib/locale-context"
 import { ReactIcon, VueIcon, NextIcon } from "@/components/icons"
 
 /**
@@ -23,20 +26,23 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "Vue": VueIcon,
 }
 
-const labelMap: Record<string, string> = {
-  "Figma": "UI",
-  "Next.js": "Development",
-  "React": "Development",
-  "React Native": "Development",
-  "Vue": "Development",
+/** Maps a tech tag to its i18n translation key. */
+const labelKeyMap: Record<string, "tech.development" | "tech.ui"> = {
+  "Figma": "tech.ui",
+  "Next.js": "tech.development",
+  "React": "tech.development",
+  "React Native": "tech.development",
+  "Vue": "tech.development",
 }
 
 /**
- * Badge that maps a technology name to a normalized label and optional icon.
+ * Badge that maps a technology name to a normalised, translated label and optional icon.
  */
 export function TechTag({ tag }: { tag: string }) {
+  const { t } = useLocale()
   const Icon = iconMap[tag]
-  const label = labelMap[tag] || tag
+  const labelKey = labelKeyMap[tag]
+  const label = labelKey ? t(labelKey) : tag
 
   return (
     <span className="inline-flex items-center gap-1.5 rounded-md bg-secondary px-3 py-1.5 text-xs leading-snug text-muted-foreground">
