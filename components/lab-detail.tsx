@@ -97,27 +97,28 @@ export function LabDetail({ slug, project }: LabDetailProps) {
           </div>
 
           {/* Title row */}
-          <div className="flex flex-col gap-1.5">
-            <h1
-              className="font-semibold leading-tight tracking-[-0.025em]"
-              style={{ fontSize: "clamp(1.35rem, 3.5vw, 1.9rem)" }}
-            >
-              {project.title}
-            </h1>
-            <p className="text-sm text-muted-foreground/80">{translated.subtitle}</p>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-1.5">
+              <h1
+                className="font-semibold leading-tight tracking-[-0.025em]"
+                style={{ fontSize: "clamp(1.35rem, 3.5vw, 1.9rem)" }}
+              >
+                {project.title}
+              </h1>
+              <p className="text-sm text-muted-foreground/80">{translated.subtitle}</p>
+            </div>
 
-            {/* External links */}
             {(project.githubUrl || project.url) && (
-              <div className="flex flex-wrap items-center gap-3 pt-1">
+              <div className="flex shrink-0 items-center gap-2 pt-0.5">
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                    aria-label="GitHub"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   >
-                    <Github className="h-3.5 w-3.5" />
-                    {t("lab.viewOnGithubShort")}
+                    <Github className="h-4 w-4" />
                   </a>
                 )}
                 {project.url && (
@@ -125,10 +126,10 @@ export function LabDetail({ slug, project }: LabDetailProps) {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                    aria-label={t("lab.visitProject")}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   >
-                    <ExternalLink className="h-3.5 w-3.5" />
-                    {t("lab.visitProject")}
+                    <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
               </div>

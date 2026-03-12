@@ -32,6 +32,8 @@ export const labProjects: LabProject[] = [
     stack: ["Angular 21", "TypeScript", "RxJS", "Reactive Forms", "Angular Router", "SCSS", "BEM", "Vitest", "ESLint", "Prettier"],
     logo: "/images/lab/citadex.svg",
     bg: "#0c1810",
+    githubUrl: "https://github.com/mayordomoespejo/citadex",
+    url: "https://citadex.mayordomoespejo.com",
     features: [
       "Standalone Angular 21 components using signals-based reactivity and the inject() pattern — no NgModules, aligned with the current Angular recommended architecture",
       "Debounced search and multi-filter state (status, gender, page) encoded in URL query params via ActivatedRoute, making every filtered view bookmarkable and shareable",
@@ -58,6 +60,8 @@ export const labProjects: LabProject[] = [
     stack: ["React 19", "TypeScript", "Vite", "TanStack Query v5", "React Router v7", "i18next", "SCSS"],
     logo: "/images/lab/dayfold.svg",
     bg: "#f5f0e8",
+    githubUrl: "https://github.com/mayordomoespejo/dayfold",
+    url: "https://dayfold.mayordomoespejo.com",
     features: [
       "Scroll-driven radial wheel mapping scroll position to rotation angle in real time, with a debounced snap timer that settles on the nearest event once the user stops scrolling",
       "URL as canonical state: month and day encoded in search params via a custom useTimelineDate hook; out-of-range values are auto-clamped to valid calendar dates on parse",
@@ -83,6 +87,8 @@ export const labProjects: LabProject[] = [
     stack: ["React 19", "TypeScript", "Vite", "React Router v7", "TanStack Query v5", "react-hook-form", "Zod v4", "MapLibre GL JS v5", "Framer Motion v12", "CSS Modules", "i18next", "Vercel Functions", "Duffel API", "Vitest", "Playwright", "GitHub Actions"],
     logo: "/images/lab/dealwing.svg",
     bg: "#0c1a2e",
+    githubUrl: "https://github.com/mayordomoespejo/dealwing",
+    url: "https://dealwing.mayordomoespejo.com",
     features: [
       "Split-view interface: MapLibre GL JS v5 with OpenFreeMap tiles (no API key) rendering curved GeoJSON arc routes and animated price-bubble markers per result",
       "BFF layer via Vercel Serverless Functions proxying Duffel and RapidAPI — API credentials never reach the client bundle",
@@ -110,6 +116,8 @@ export const labProjects: LabProject[] = [
     stack: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "TanStack Query v5", "Framer Motion v12", "Zustand v5", "next-themes", "Lucide React", "Vitest", "Testing Library", "Playwright", "ESLint 9", "Prettier", "Husky", "GitHub Actions"],
     logo: "/images/lab/pokelocator.svg",
     bg: "#1a1a2e",
+    githubUrl: "https://github.com/mayordomoespejo/pokelocator",
+    url: "https://pokelocator.mayordomoespejo.com",
     features: [
       "Infinite scroll grid with TanStack Query useInfiniteQuery; type filter transparently swaps to a regular useQuery when PokéAPI returns a non-paginated full-type list, without changes to the UI layer",
       "Client-side search: all ~1 300 Pokémon names fetched once (staleTime: Infinity) and filtered with a 300ms debounce — eliminates per-keystroke API round-trips",
@@ -137,6 +145,8 @@ export const labProjects: LabProject[] = [
     stack: ["React 19", "TypeScript", "Vite", "React Router v6", "Zustand v5", "TanStack Query v5", "Formik", "Yup", "Axios", "react-player", "media-chrome", "SCSS", "BEM", "i18next"],
     logo: "/images/lab/pulse.svg",
     bg: "#1a0808",
+    githubUrl: "https://github.com/mayordomoespejo/pulse",
+    url: "https://pulse.mayordomoespejo.com",
     features: [
       "Auth-gated SPA: Formik + Yup login form validates credentials before storing the session in a Zustand v5 slice with Persist middleware, protecting all routes across page reloads",
       "Video feed and keyword search against the Pexels Videos API via a typed Axios client; orientation, size and locale filters applied as query params without resetting the TanStack Query cache key unnecessarily",
@@ -163,6 +173,8 @@ export const labProjects: LabProject[] = [
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "next-themes", "pnpm"],
     logo: "/images/lab/portfolio.svg",
     bg: "#0a0a0a",
+    githubUrl: "https://github.com/mayordomoespejo/mayordomo-espejo-portfolio",
+    url: "https://mayordomoespejo.com",
     features: [
       "Next.js 16 App Router with generateStaticParams pre-rendering all project and lab detail pages at build time — zero server-side runtime required in production",
       "Custom locale context exposing a t() getter typed against a single translations.ts constant — no external i18n library, locale persisted to localStorage with no flash on load",

@@ -30,8 +30,8 @@ export const translations = {
 
     "lab.sectionTitle": "Lab",
     "lab.allProjects": "Todos los proyectos de Lab",
-    "lab.viewOnGithubShort": "GitHub ↗",
-    "lab.visitProject": "Ver proyecto ↗",
+    "lab.viewOnGithubShort": "GitHub",
+    "lab.visitProject": "Ver proyecto",
     "lab.keyFeatures": "Qué construí",
     "lab.howItWorks": "Cómo funciona",
     "lab.gallery": "Galería",
@@ -129,8 +129,8 @@ export const translations = {
 
     "lab.sectionTitle": "Lab",
     "lab.allProjects": "All Lab Projects",
-    "lab.viewOnGithubShort": "GitHub ↗",
-    "lab.visitProject": "Visit project ↗",
+    "lab.viewOnGithubShort": "GitHub",
+    "lab.visitProject": "Visit project",
     "lab.keyFeatures": "What I Built",
     "lab.howItWorks": "How It Works",
     "lab.gallery": "Gallery",
