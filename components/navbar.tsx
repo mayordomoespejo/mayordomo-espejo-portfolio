@@ -336,7 +336,7 @@ export function Navbar() {
                   </Link>
                 </li>
               ))}
-              <li className="flex flex-wrap items-center gap-2 pt-1">
+              <li className="flex flex-wrap items-center justify-end gap-2 pt-1">
                 <NavControls
                   locale={locale}
                   setLocale={setLocale}

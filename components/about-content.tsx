@@ -42,16 +42,18 @@ const SKILL_TAGS: Record<string, string[]> = {
     "WebView",
     "Push Notifications",
   ],
-  automation: ["n8n", "OpenAI", "RAG Systems", "Pinecone", "Cursor"],
+  automation: ["n8n", "OpenAI", "Codex", "RAG Systems", "Pinecone", "Cursor"],
   ui: [
     "HTML5",
     "CSS3",
     "Sass (SCSS)",
     "Tailwind CSS",
+    "Bootstrap",
     "Responsive Design",
+    "React Select",
     "i18n / i18next",
   ],
-  build: ["Vite", "Expo EAS", "Storybook", "CI/CD", "Git", "GitHub", "SWC"],
+  build: ["Vite", "Expo EAS", "Storybook", "CI/CD", "Git", "GitHub", "Babel", "SWC"],
   quality: ["ESLint", "Vitest", "Testing Library", "Playwright", "Prettier"],
 }
 
@@ -75,32 +77,53 @@ interface Certification {
   issuer: string
   date: string
   skills: string[]
-  /** Path under /public */
-  image: string
+  /** Path under /public — omit if no certificate image is available yet */
+  image?: string
 }
 
 const CERTIFICATIONS: Certification[] = [
   {
+    name: "AI-Driven Development from Zero to Production",
+    nameEs: "Desarrollo con IA de 0 a producción",
+    issuer: "BIGschool",
+    date: "2026",
+    skills: ["AI Tools", "Cursor", "OpenAI", "Codex", "Prompt Engineering", "Automation"],
+  },
+  {
+    name: "Responsive Web Design",
+    nameEs: "Diseño web adaptable",
+    issuer: "freeCodeCamp",
+    date: "2026",
+    skills: ["HTML5", "CSS3", "Responsive Design", "Flexbox", "CSS Grid"],
+  },
+  {
+    name: "B1 English for Developers",
+    nameEs: "B1 inglés para desarrolladores",
+    issuer: "freeCodeCamp",
+    date: "2026",
+    skills: ["English", "Technical Communication", "Developer Vocabulary"],
+  },
+  {
     name: "Advanced Java",
-    nameEs: "Java Avanzado",
+    nameEs: "Java avanzado",
     issuer: "OpenBootcamp",
-    date: "Jul. 2023",
+    date: "2023",
     skills: ["Java", "OOP", "Data Structures", "Algorithms", "Backend Development"],
     image: "/images/certs/java_avanzado.png",
   },
   {
     name: "Java Fundamentals",
-    nameEs: "Java Básico",
+    nameEs: "Java básico",
     issuer: "OpenBootcamp",
-    date: "Jul. 2023",
+    date: "2023",
     skills: ["Java", "OOP", "Programming", "Algorithms", "Software Development"],
     image: "/images/certs/java_basico.png",
   },
   {
     name: "Programming Concepts",
-    nameEs: "Conceptos de la programación",
+    nameEs: "Conceptos de programación",
     issuer: "OpenBootcamp",
-    date: "Jul. 2023",
+    date: "2023",
     skills: ["Programming Fundamentals", "Programming Logic", "Algorithms", "Software Development"],
     image: "/images/certs/conceptos_programacion.png",
   },
@@ -108,7 +131,7 @@ const CERTIFICATIONS: Certification[] = [
     name: "Introduction to Programming",
     nameEs: "Introducción a la programación",
     issuer: "OpenBootcamp",
-    date: "Feb. 2023",
+    date: "2023",
     skills: ["Programming", "Logic", "Algorithms", "JavaScript", "Web Development", "Problem Solving"],
     image: "/images/certs/introduccion_programacion.png",
   },
@@ -120,7 +143,7 @@ const CERTIFICATIONS: Certification[] = [
  * Fixed 16:9 thumbnail — uniform for all certs regardless of actual image ratio.
  * object-cover ensures the box is always filled.
  */
-function CertThumbnail({ src, title, onClick }: { src: string; title: string; onClick: () => void }) {
+function CertThumbnail({ src, title, onClick, fullWidthOnMobile }: { src: string; title: string; onClick: () => void; fullWidthOnMobile?: boolean }) {
   const { t } = useLocale()
 
   return (
@@ -128,10 +151,10 @@ function CertThumbnail({ src, title, onClick }: { src: string; title: string; on
       type="button"
       onClick={onClick}
       aria-label={t("about.certifications.view")}
-      className="group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className={fullWidthOnMobile ? "group w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:w-auto sm:shrink-0" : "group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"}
     >
       {/* Fixed 16:9 box — uniform across all certs */}
-      <div className="relative w-[160px] overflow-hidden rounded-lg border border-border/60 bg-muted/30 shadow-sm transition-shadow group-hover:shadow-md" style={{ aspectRatio: "16/9" }}>
+      <div className={`relative overflow-hidden bg-muted/30 transition-shadow group-hover:shadow-md ${fullWidthOnMobile ? "w-full rounded-none border-t border-border/60 sm:w-[160px] sm:rounded-lg sm:border" : "w-[160px] rounded-lg border border-border/60 shadow-sm"}`} style={{ aspectRatio: "16/9" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
@@ -163,9 +186,9 @@ function CertCard({
   const name = locale === "es" ? cert.nameEs : cert.name
 
   return (
-    <div className="flex items-center gap-1 rounded-xl border border-border/60 bg-card p-4">
-      {/* Text block — medal sits in the title row so it's naturally aligned with it */}
-      <div className="flex min-w-0 flex-1 flex-col gap-2">
+    <div className="overflow-hidden rounded-xl border border-border/60 bg-card sm:flex sm:flex-row sm:items-center sm:gap-1 sm:p-4">
+      {/* Text block */}
+      <div className="flex min-w-0 flex-1 flex-col gap-2 p-4 sm:p-0">
         <div className="flex items-center justify-between gap-2">
           <div className="flex min-w-0 items-center gap-1.5">
             <Award className="h-3.5 w-3.5 shrink-0 text-muted-foreground/50" aria-hidden />
@@ -188,14 +211,17 @@ function CertCard({
         </div>
       </div>
 
-      {/* Thumbnail — right side, centrado verticalmente respecto al contenido */}
-      <div className="flex items-center self-stretch pl-4">
-      <CertThumbnail
-        src={cert.image}
-        title={name}
-        onClick={() => onView(cert.image, name)}
-      />
-      </div>
+      {/* Thumbnail — flush bottom on mobile (full width, no padding), right side on sm+ */}
+      {cert.image && (
+        <div className="sm:flex sm:items-center sm:self-stretch sm:pl-4">
+          <CertThumbnail
+            src={cert.image}
+            title={name}
+            onClick={() => onView(cert.image!, name)}
+            fullWidthOnMobile
+          />
+        </div>
+      )}
     </div>
   )
 }
@@ -340,9 +366,16 @@ export function AboutContent() {
                     : t(`about.skills.${key}` as "about.skills.programming")}
                 </h3>
                 {key === "languages" ? (
-                  <p className="text-sm text-muted-foreground">
-                    {t("about.skills.langs.native")} · {t("about.skills.langs.english")}
-                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {[t("about.skills.langs.native"), t("about.skills.langs.english")].map((lang) => (
+                      <span
+                        key={lang}
+                        className="rounded bg-foreground/[0.06] px-2 py-0.5 text-xs text-muted-foreground"
+                      >
+                        {lang}
+                      </span>
+                    ))}
+                  </div>
                 ) : (
                   <div className="flex flex-wrap gap-1.5">
                     {(SKILL_TAGS[key] ?? []).map((skill) => (
@@ -385,7 +418,7 @@ export function AboutContent() {
                 key={i}
                 className="flex items-baseline gap-5 py-2.5 last:pb-0 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-border/60"
               >
-                <span className="w-20 shrink-0 font-mono text-xs tabular-nums text-muted-foreground/60">
+                <span className="shrink-0 whitespace-nowrap font-mono text-xs tabular-nums text-muted-foreground/60">
                   {item.year}
                 </span>
                 <span className="text-sm text-muted-foreground">{item.label}</span>
