@@ -99,8 +99,8 @@ export const translations = {
       "Participación en decisiones técnicas y diseño de arquitectura en equipos ágiles y multidisciplinares; control de versiones con Git y GitHub.",
     ],
     "about.education.items": [
-      { year: "2024", label: "Técnico Superior en Desarrollo de Aplicaciones Web — ILERNA FP" },
-      { year: "2004", label: "Bachillerato Científico-Tecnológico — IES Ricardo Ortega (Murcia)" },
+      { year: "2023–2024", label: "Técnico Superior en Desarrollo de Aplicaciones Web — ILERNA FP" },
+      { year: "2002–2004", label: "Bachillerato Científico-Tecnológico — IES Ricardo Ortega (Murcia)" },
     ],
     "about.skills.langs.native": "Español (nativo)",
     "about.skills.langs.english": "Inglés – Intermedio-Alto (B2+)",
@@ -199,11 +199,8 @@ export const translations = {
       "Participate in technical decision-making and architecture design within agile, multidisciplinary teams; version control with Git and GitHub.",
     ],
     "about.education.items": [
-      { year: "2024", label: "Higher Technician in Web Application Development — ILERNA FP" },
-      {
-        year: "2004",
-        label: "Scientific-Technological High School Diploma — IES Ricardo Ortega (Murcia, Spain)",
-      },
+      { year: "2023–2024", label: "Higher Technician in Web Application Development — ILERNA FP" },
+      { year: "2002–2004", label: "Scientific-Technological High School Diploma — IES Ricardo Ortega (Murcia, Spain)" },
     ],
     "about.skills.langs.native": "Spanish (Native)",
     "about.skills.langs.english": "English – Upper-Intermediate (B2+)",

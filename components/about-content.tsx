@@ -410,7 +410,7 @@ export function AboutContent() {
                 key={i}
                 className="flex items-baseline gap-5 py-2.5 last:pb-0 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-border/60"
               >
-                <span className="w-20 shrink-0 font-mono text-xs tabular-nums text-muted-foreground/60">
+                <span className="w-24 shrink-0 font-mono text-xs tabular-nums text-muted-foreground/60">
                   {item.year}
                 </span>
                 <span className="text-sm text-muted-foreground">{item.label}</span>
