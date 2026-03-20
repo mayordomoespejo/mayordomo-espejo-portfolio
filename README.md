@@ -1,65 +1,72 @@
 # Mayordomo Espejo Portfolio
 
-Portfolio personal construido con Next.js, TypeScript, Tailwind CSS y Framer Motion.
+Personal portfolio site for Miguel Mayordomo Espejo, Frontend Developer based in Alicante, Spain.
+
+---
 
 ## Stack
 
-- `Next.js 16` (App Router)
-- `React 19`
-- `TypeScript`
-- `Tailwind CSS`
-- `Framer Motion`
-- `next-themes`
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| UI | React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Animation | Framer Motion |
+| Theming | next-themes |
+| Analytics | Vercel Analytics |
+| Package manager | pnpm |
 
-## Requisitos
+---
 
-- `Node.js 20+`
-- `pnpm`
+## Demo
 
-## Desarrollo local
+[portfolio.mayordomoespejo.com](https://portfolio.mayordomoespejo.com)
+
+---
+
+## Features
+
+- Home page with hero, featured projects, and contact call to action
+- Projects section with individual detail pages and image carousel
+- Lab section showcasing experimental and side projects with detail pages
+- About page with professional background and company history
+- Light and dark theme with system preference detection
+- Bilingual UI with English and Spanish support
+- Optimized metadata and viewport configuration for SEO and PWA
+- Vercel Analytics integration
+
+---
+
+## Getting started
+
+Install dependencies:
 
 ```bash
 pnpm install
+```
+
+Start the development server:
+
+```bash
 pnpm dev
 ```
 
-App disponible en `http://localhost:3000`.
+The app is available at `http://localhost:3000`.
+
+---
 
 ## Scripts
 
-```bash
-pnpm dev    # entorno de desarrollo
-pnpm build  # build de producción
-pnpm start  # servidor de producción
-pnpm lint   # análisis estático
-```
+| Command | Description |
+|---|---|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production |
+| `pnpm start` | Start production server |
+| `pnpm lint` | Run ESLint |
 
-## Estructura del proyecto
+---
 
-- `app/`: rutas y layout global.
-- `components/`: componentes de UI reutilizables.
-- `hooks/`: hooks de aplicación.
-- `lib/`: configuración, utilidades, i18n y datos de proyectos.
-- `public/images/`: imágenes usadas por las cards y detalles de proyectos.
+## License
 
-## Personalización rápida
-
-- Perfil principal: `lib/site-config.ts`.
-- Página home: `components/hero.tsx`, `components/featured-projects.tsx`, `components/contact-cta.tsx`.
-- Página about: `components/about-content.tsx`.
-- Navbar y footer: `components/navbar.tsx`, `components/footer.tsx`.
-- Proyectos base: `lib/data/projects.ts`.
-- Traducciones de proyectos: `lib/data/project-translations.ts`.
-- Diccionario general i18n: `lib/translations.ts`.
-
-## Convenciones de documentación
-
-- El código público (componentes y utilidades exportadas) usa comentarios `JSDoc/TSDoc` breves.
-- Se han eliminado comentarios decorativos o redundantes para mantener foco en comportamiento y contratos.
-
-## Build de producción
-
-```bash
-pnpm build
-pnpm start
-```
+MIT
